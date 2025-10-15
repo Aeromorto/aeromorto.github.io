@@ -3,35 +3,73 @@
 <head>
     <title>Aeromorto</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Pra responsividade no mobile -->
     <!-- CDN do Font Awesome 6 para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxvA5nZ+Pi6nyAtgg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        i { font-size: 16px; margin-right: 8px; } /* Mini-ícones com espaçamento */
+        body { 
+            text-align: center; /* Centraliza todo o texto */
+            font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Fonte ainda mais Apple-priorizada */
+            font-size: 15px; /* Tamanho base refinado, um pouco menor pra elegância no mobile */
+        }
+        h1 {
+            font-size: 24px; /* Tamanho padrão pro título no desktop */
+            margin-bottom: 20px;
+        }
+        @media (max-width: 430px) { /* Responsivo pro iPhone 16 Pro e mobiles similares */
+            h1 {
+                font-size: 18px; /* Diminui no mobile pra não ficar muito grande */
+            }
+            body {
+                font-size: 14px; /* Ajuste extra pro mobile pra refinamento */
+            }
+        }
+        ul { 
+            list-style-type: none; /* Remove bullets */
+            padding: 0;
+            margin: 0 auto;
+            max-width: 300px; /* Limita largura pra centralizar */
+        }
+        li { 
+            margin: 10px 0; /* Espaçamento vertical */
+        }
+        i { 
+            font-size: 16px; /* Mini-ícones */
+            margin-right: 8px;
+        }
+        a { 
+            text-decoration: none;
+            color: #000;
+        }
+        p { 
+            margin-top: 20px;
+            font-size: 14px; /* Contato um pouco menor pra refinamento */
+        }
     </style>
 </head>
 <body>
     <h1>Todas as minhas mídias sociais (All my social media)</h1>
     <ul>
-        <li><a href="https://www.youtube.com/@aeromorto" target="_blank"><i class="fa-brands fa-youtube"></i> yt</a></li>
-        <li><a href="https://www.instagram.com/aeromorto/" target="_blank"><i class="fa-brands fa-instagram"></i> instagram</a></li>
-        <li><a href="https://x.com/aeromorto" target="_blank"><i class="fa-brands fa-x-twitter"></i> x</a></li>
-        <li><a href="https://music.apple.com/profile/aeromorto" target="_blank"><i class="fa-brands fa-apple"></i> apple music</a></li>
-        <li><a href="https://onlyfans.com/aeromorto" target="_blank"><i class="fa-solid fa-user-lock"></i> onlyfans</a></li>
-        <li><a href="https://psnprofiles.com/aeromorto" target="_blank"><i class="fa-brands fa-playstation"></i> psn</a></li>
-        <li><a href="https://www.xbox.com/pt-BR/play/user/Aeromorto" target="_blank"><i class="fa-brands fa-xbox"></i> xbox live</a></li>
-        <li><a href="https://www.twitch.tv/aeromorto" target="_blank"><i class="fa-brands fa-twitch"></i> twitch</a></li>
-        <li><a href="https://kick.com/aeromorto" target="_blank"><i class="fa-solid fa-football-ball"></i> kick</a></li>
-        <li><a href="https://soundcloud.com/aeromorto" target="_blank"><i class="fa-brands fa-soundcloud"></i> soundcloud</a></li>
-        <li><a href="https://www.tiktok.com/@aeromorto" target="_blank"><i class="fa-brands fa-tiktok"></i> tiktok</a></li>
-        <li><a href="https://steamcommunity.com/id/aeromorto/" target="_blank"><i class="fa-brands fa-steam"></i> steam</a></li>
-        <li><a href="https://www.reddit.com/user/aeromorto" target="_blank"><i class="fa-brands fa-reddit"></i> reddit</a></li>
-        <li><a href="https://www.okx.com/u/aeromorto" target="_blank"><i class="fa-brands fa-bitcoin"></i> okx</a></li>
-        <li><a href="https://t.me/aeromorto" target="_blank"><i class="fa-brands fa-telegram"></i> telegram</a></li>
-        <li><a href="https://www.threads.net/@aeromorto" target="_blank"><i class="fa-brands fa-threads"></i> threads</a></li>
-        <li><a href="https://discord.com/users/aeromorto" target="_blank"><i class="fa-brands fa-discord"></i> discord (substitua pelo ID numérico se necessário)</a></li>
-        <li><a href="https://aeromorto.bandcamp.com" target="_blank"><i class="fa-brands fa-bandcamp"></i> bandcamp</a></li>
-        <li><a href="https://github.com/aeromorto" target="_blank"><i class="fa-brands fa-github"></i> github</a></li>
+        <li><a href="https://x.com/aeromorto" target="_blank"><i class="fa-brands fa-x-twitter"></i> X</a></li>
+        <li><a href="https://www.instagram.com/aeromorto/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.youtube.com/@aeromorto" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://music.apple.com/profile/aeromorto" target="_blank"><i class="fa-brands fa-apple"></i> Apple Music</a></li>
+        <li><a href="https://onlyfans.com/aeromorto" target="_blank"><i class="fa-solid fa-user-lock"></i> OnlyFans</a></li>
+        <li><a href="https://www.twitch.tv/aeromorto" target="_blank"><i class="fa-brands fa-twitch"></i> Twitch</a></li>
+        <li><a href="https://psnprofiles.com/aeromorto" target="_blank"><i class="fa-brands fa-playstation"></i> PSN</a></li>
+        <li><a href="https://www.xbox.com/pt-BR/play/user/Aeromorto" target="_blank"><i class="fa-brands fa-xbox"></i> Xbox Live</a></li>
+        <li><a href="https://www.tiktok.com/@aeromorto" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+        <li><a href="https://soundcloud.com/aeromorto" target="_blank"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a></li>
+        <li><a href="https://kick.com/aeromorto" target="_blank"><i class="fa-solid fa-football-ball"></i> Kick</a></li>
+        <li><a href="https://steamcommunity.com/id/aeromorto/" target="_blank"><i class="fa-brands fa-steam"></i> Steam</a></li>
+        <li><a href="https://www.reddit.com/user/aeromorto" target="_blank"><i class="fa-brands fa-reddit"></i> Reddit</a></li>
+        <li><a href="https://t.me/aeromorto" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a></li>
+        <li><a href="https://www.threads.net/@aeromorto" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a></li>
+        <li><a href="https://www.okx.com/u/aeromorto" target="_blank"><i class="fa-brands fa-bitcoin"></i> OKX</a></li>
+        <li><a href="https://discord.com/users/aeromorto" target="_blank"><i class="fa-brands fa-discord"></i> Discord @Aeromorto</a></li>
+        <li><a href="https://aeromorto.bandcamp.com" target="_blank"><i class="fa-brands fa-bandcamp"></i> Bandcamp</a></li>
+        <li><a href="https://github.com/aeromorto" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
     </ul>
-    <p>contato: aeromorto@icloud.com</p>
+    <p>Contato: aeromorto@icloud.com</p>
 </body>
 </html>
