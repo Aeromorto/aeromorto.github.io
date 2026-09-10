@@ -1,98 +1,934 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Aeromorto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Aeromorto</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        body { 
-            text-align: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+        :root {
+            --bg: #000;
+            --card: rgba(10, 10, 10, 0.68);
+            --line: #2a2a2a;
+            --text: #fff;
+            --muted: #888;
+            --soft: #cfcfcf;
+        }
+        * { box-sizing: border-box; }
+        html, body {
             margin: 0;
-            padding: 40px 20px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        body {
             min-height: 100vh;
+            padding: 48px 20px 80px;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.78)),
+                url("assets/bg.png") center 42% / cover no-repeat;
+        }
+        .wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: scale(0.86) translateY(28px);
+            filter: blur(16px);
+        }
+        body.entered .wrap {
+            animation: fromDepth 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fromDepth {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+        .avatar-wrap {
+            position: relative;
+            display: inline-block;
+        }
+        .avatar {
+            width: 93px;
+            height: 93px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #333;
+            display: block;
+        }
+        .status {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: 3px;
+            bottom: 3px;
+            border: 2px solid #0a0a0a;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: none;
+            pointer-events: none;
         }
         h1 {
-            font-size: 32px;
-            margin: 15px 0 8px;
+            font-size: 28px;
+            font-weight: 650;
+            letter-spacing: -0.03em;
+            margin: 16px 0 6px;
+            text-shadow: 0 2px 16px rgba(0,0,0,.85);
         }
-        h2 {
-            font-size: 19px;
-            color: #aaa;
-            margin-bottom: 35px;
+        .subtitle {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0;
+            text-shadow: 0 1px 10px rgba(0,0,0,.8);
         }
-        ul { 
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            max-width: 400px;
-        }
-        li { 
-            margin: 14px 0;
-        }
-        a.button {
+        .location {
             display: flex;
             align-items: center;
-            gap: 14px;
-            background-color: #111;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 17px 24px;
-            border-radius: 14px;
-            font-weight: 600;
+            justify-content: center;
+            gap: 8px;
+            color: #c4c4c4;
+            font-size: 13px;
+            margin: 8px 0 0;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .location img {
+            width: 18px;
+            height: 13px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+        .location .sep { color: #666; }
+        .views {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #c4c4c4;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .views i { font-size: 12px; }
+        .socials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 18px 0 0;
+        }
+        .socials a {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            color: #ddd;
+            background: rgba(12, 12, 12, 0.9);
+            border: 1px solid #3a3a3a;
+            border-radius: 10px;
             text-decoration: none;
-            transition: all 0.3s;
-            font-size: 17px;
+            font-size: 15px;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
         }
-        a.button:hover {
-            background-color: #222;
-            border-color: #fff;
-            transform: translateY(-4px);
+        .socials a:hover {
+            color: #fff;
+            border-color: #888;
+            background: #1a1a1a;
         }
-        .crypto-container { 
-            margin-top: 50px;
-            padding: 25px;
-            background-color: #111;
-            border-radius: 14px;
-            border: 1px solid #333;
+        .socials a svg {
+            width: 15px;
+            height: 15px;
+            display: block;
+            fill: currentColor;
+        }
+        .section {
+            margin: 0 0 36px;
+        }
+        .section h2 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c8c8c8;
+            margin: 0 0 12px;
+            padding: 0 2px;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .gear {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gear-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 10px;
+            min-width: 0;
+            border-bottom: 1px solid #1c1c1c;
+        }
+        .gear-item:nth-child(odd) {
+            border-right: 1px solid #1c1c1c;
+        }
+        .gear-item:last-child,
+        .gear-item:nth-child(odd):nth-last-child(2) {
+            border-bottom: none;
+        }
+        .gear-item:nth-child(odd):last-child {
+            grid-column: 1 / -1;
+            width: 50%;
+            justify-self: center;
+            border-right: none;
+        }
+        .gear-item img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: #0a0a0a;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .gear-meta {
+            min-width: 0;
+        }
+        .gear-cat {
+            display: block;
+            font-size: 10px;
+            color: #9a9a9a;
+            margin-bottom: 2px;
+        }
+        .gear-name {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 12.5px;
+            font-weight: 560;
+            line-height: 1.3;
+            color: var(--soft);
+        }
+        .contact {
+            margin-top: 28px;
+            text-align: center;
+            color: #bbb;
+            font-size: 14px;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .contact a { color: #999; text-decoration: none; }
+        #gate {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.55s ease;
+        }
+        #gate.gone {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .gate-inner {
+            text-align: center;
+            user-select: none;
+            transition: transform 0.5s ease, opacity 0.4s ease;
+        }
+        #gate.gone .gate-inner {
+            transform: scale(1.12);
+            opacity: 0;
+        }
+        .gate-inner h1 {
+            font-size: 32px;
+            margin: 0 0 14px;
+        }
+        .gate-inner span {
+            color: #777;
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .player {
+            position: fixed;
+            left: 16px;
+            bottom: 16px;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 18px rgba(0,0,0,.45);
+            transition:
+                width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                padding 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.28s ease,
+                border-color 0.28s ease;
+        }
+        .player.show { display: flex; }
+        .player:hover,
+        .player.open,
+        .player:focus-within {
+            width: min(340px, calc(100vw - 32px));
+            height: 56px;
+            padding: 6px 10px 6px 6px;
+            border-radius: 999px;
+            background: rgba(12, 12, 12, 0.94);
+            border-color: #3a3a3a;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .vinyl {
+            width: 44px;
+            height: 44px;
+            border: 0;
+            padding: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            background:
+                repeating-radial-gradient(circle at 50% 50%,
+                    #0a0a0a 0 1px,
+                    #171717 1px 2px);
+            box-shadow:
+                inset 0 0 0 1px #2a2a2a,
+                inset 0 0 0 7px rgba(0,0,0,.35);
+            overflow: hidden;
+        }
+        .player:hover .vinyl,
+        .player.open .vinyl,
+        .player:focus-within .vinyl {
+            width: 44px;
+            height: 44px;
+        }
+        .vinyl-label {
+            position: absolute;
+            inset: 28%;
+            border-radius: 50%;
+            background: #111 url("assets/prayer-in-c-cover.jpg") center / cover no-repeat;
+            box-shadow: 0 0 0 1px #222;
+        }
+        .vinyl-hole {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            margin: -3px 0 0 -3px;
+            border-radius: 50%;
+            background: #050505;
+            box-shadow: 0 0 0 1px #444;
+            z-index: 1;
+        }
+        .player.spinning .vinyl {
+            animation: vinylSpin 3.2s linear infinite;
+        }
+        @keyframes vinylSpin {
+            to { transform: rotate(360deg); }
+        }
+        .player-body {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+            flex: 1;
+            opacity: 0;
+            margin-left: 8px;
+            transition: opacity 0.2s ease 0.12s;
+        }
+        .player:hover .player-body,
+        .player.open .player-body,
+        .player:focus-within .player-body {
+            opacity: 1;
+        }
+        .player-main {
+            min-width: 0;
+            flex: 1;
+        }
+        .player-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .player-artist {
+            font-size: 11px;
+            color: #888;
+            margin: 1px 0 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .player-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .player-bar span {
+            font-size: 10px;
+            color: #777;
+            font-variant-numeric: tabular-nums;
+            min-width: 28px;
+        }
+        .player-bar span:last-child { text-align: right; }
+        .player-bar input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            flex: 1;
+            height: 4px;
+            border-radius: 99px;
+            background: #333;
+            outline: none;
+        }
+        .player-bar input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+        .player-bar input[type="range"]::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            border: 0;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+        #playBtn {
+            width: 32px;
+            height: 32px;
+            border: 0;
+            background: transparent;
+            color: #ddd;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        #playBtn:hover { color: #fff; background: #222; }
+        .lang {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(12, 12, 12, 0.9);
+            border: 1px solid #3a3a3a;
+            border-radius: 999px;
+            padding: 7px 12px;
+            color: #ddd;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 650;
+            letter-spacing: 0.06em;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .lang:hover { border-color: #888; }
+        .lang .code { color: #666; }
+        .lang .code.on { color: #fff; }
+        .lang i {
+            font-size: 11px;
+            color: #555;
+        }
+        @media (max-width: 560px) {
+            body { padding: 56px 14px 80px; }
+            h1 { font-size: 24px; }
+            .gate-inner h1 { font-size: 26px; }
+            .avatar { width: 81px; height: 81px; }
+            .status { width: 16px; height: 16px; }
+            .socials { gap: 7px; }
+            .socials a { width: 34px; height: 34px; }
+            .gear-item { padding: 10px 8px; gap: 8px; }
+            .gear-item img { width: 40px; height: 40px; }
+            .gear-name { font-size: 11.5px; }
+            .gear-cat { font-size: 9px; }
+            .player { left: 12px; bottom: 12px; }
+            .player:hover,
+            .player.open,
+            .player:focus-within { width: min(300px, calc(100vw - 24px)); }
+            .player-title { font-size: 12px; }
+            .lang { top: 10px; right: 10px; padding: 6px 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .wrap, .player.show, #gate, .gate-inner {
+                animation: none !important;
+                transition: none !important;
+                filter: none !important;
+            }
+            body.entered .wrap {
+                opacity: 1;
+                transform: none;
+            }
+            .player.show { opacity: 1; transform: none; }
+        }
+        @media (max-width: 380px) {
+            .gear-item:nth-child(odd):last-child { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <h1>@Aeromorto</h1>
-    <h2>Social Media & Gaming</h2>
-
-    <ul>
-        <li><a href="https://x.com/aeromorto" target="_blank" class="button"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a></li>
-        <li><a href="https://www.instagram.com/aeromorto/" target="_blank" class="button"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-        <li><a href="https://www.youtube.com/@aeromorto" target="_blank" class="button"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
-        <li><a href="https://open.spotify.com/user/aeromorto" target="_blank" class="button"><i class="fa-brands fa-spotify"></i> Spotify</a></li>
-        <li><a href="https://music.apple.com/profile/aeromorto" target="_blank" class="button"><i class="fa-brands fa-apple"></i> Apple Music</a></li>
-        <li><a href="https://www.twitch.tv/aeromorto" target="_blank" class="button"><i class="fa-brands fa-twitch"></i> Twitch</a></li>
-        <li><a href="https://kick.com/aeromorto" target="_blank" class="button"><i class="fa-solid fa-gamepad"></i> Kick</a></li>
-        <li><a href="https://www.faceit.com/players/Aeromorto" target="_blank" class="button"><i class="fa-solid fa-trophy"></i> FACEIT</a></li>
-        <li><a href="https://yourgamerprofile.com/Aeromorto" target="_blank" class="button"><i class="fa-solid fa-user"></i> YourGamerProfile</a></li>
-        <li><a href="https://onlyfans.com/aeromorto" target="_blank" class="button"><i class="fa-solid fa-lock"></i> OnlyFans</a></li>
-        <li><a href="https://profile.playstation.com/Aeromorto" target="_blank" class="button"><i class="fa-brands fa-playstation"></i> PSN</a></li>
-        <li><a href="https://www.xbox.com/pt-BR/play/user/Aeromorto" target="_blank" class="button"><i class="fa-brands fa-xbox"></i> Xbox</a></li>
-        <li><a href="https://steamcommunity.com/id/aeromorto/" target="_blank" class="button"><i class="fa-brands fa-steam"></i> Steam</a></li>
-        <li><a href="https://www.tiktok.com/@aeromorto" target="_blank" class="button"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
-        <li><a href="https://soundcloud.com/aeromorto" target="_blank" class="button"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a></li>
-        <li><a href="https://www.reddit.com/user/aeromorto" target="_blank" class="button"><i class="fa-brands fa-reddit"></i> Reddit</a></li>
-        <li><a href="https://t.me/aeromorto" target="_blank" class="button"><i class="fa-brands fa-telegram"></i> Telegram</a></li>
-        <li><a href="https://www.threads.net/@aeromorto" target="_blank" class="button"><i class="fa-brands fa-threads"></i> Threads</a></li>
-        <li><a href="https://github.com/aeromorto" target="_blank" class="button"><i class="fa-brands fa-github"></i> GitHub</a></li>
-        <li><a href="https://discord.com/users/aeromorto" target="_blank" class="button"><i class="fa-brands fa-discord"></i> Discord (Mensagem Direta)</a></li>
-    </ul>
-
-    <div class="crypto-container">
-        <p style="font-size:17px; margin-bottom:8px;"><strong>Doe Cripto!</strong></p>
-        <p style="word-break: break-all; font-size: 14.5px; color:#ccc;">bc1qpatxpwvlh4uvclfe7s399xrd9rjherd3cfu87q</p>
+    <button class="lang" id="langBtn" type="button" aria-label="Idioma">
+        <span class="code on" id="langFrom">PT</span>
+        <i class="fa-solid fa-right-left"></i>
+        <span class="code" id="langTo">EN</span>
+    </button>
+    <div id="gate">
+        <div class="gate-inner">
+            <h1>@Aeromorto</h1>
+            <span data-i18n="enter">clique para entrar</span>
+        </div>
+    </div>
+    <audio id="bgm" preload="auto" playsinline webkit-playsinline>
+        <source src="assets/prayer-in-c.mp3" type="audio/mpeg">
+    </audio>
+    <div class="player" id="player">
+        <button class="vinyl" id="vinylBtn" type="button" aria-label="Player">
+            <span class="vinyl-label"></span>
+            <span class="vinyl-hole"></span>
+        </button>
+        <div class="player-body">
+            <div class="player-main">
+                <div class="player-title">Prayer In C</div>
+                <div class="player-artist">Lilly Wood &amp; The Prick</div>
+                <div class="player-bar">
+                    <span id="tCur">0:00</span>
+                    <input id="seek" type="range" min="0" max="29" step="0.01" value="0">
+                    <span id="tEnd">0:29</span>
+                </div>
+            </div>
+            <button id="playBtn" type="button" data-i18n-aria="play" aria-label="Play"><i class="fa-solid fa-pause"></i></button>
+        </div>
     </div>
 
-    <p style="margin-top: 35px; color: #777;">Contato: aeromorto@icloud.com</p>
+    <div class="wrap">
+        <header class="profile">
+            <div class="avatar-wrap">
+                <img class="avatar" src="assets/avatar.png" alt="Aeromorto">
+                <span class="status" data-i18n-title="online" title="Online"></span>
+            </div>
+            <h1>@Aeromorto</h1>
+            <p class="subtitle" data-i18n="subtitle">Social Media &amp; Gaming</p>
+            <p class="location">
+                <img src="assets/dk.svg" alt="">
+                <span data-i18n="denmark">Dinamarca</span>
+                <span class="sep">|</span>
+                <span class="views" data-i18n-title="views" title="Visitantes">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>8,322</span>
+                </span>
+            </p>
+            <nav class="socials" data-i18n-aria="socials" aria-label="Redes">
+                <a href="https://x.com/aeromorto" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/aeromorto/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@aeromorto" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://open.spotify.com/user/aeromorto" target="_blank" rel="noopener" title="Spotify" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://music.apple.com/profile/aeromorto" target="_blank" rel="noopener" title="Apple Music" aria-label="Apple Music"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg></a>
+                <a href="https://www.twitch.tv/aeromorto" target="_blank" rel="noopener" title="Twitch" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://kick.com/aeromorto" target="_blank" rel="noopener" title="Kick" aria-label="Kick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.333 0h8v5.333H12V2.667h2.667V0h8v8H20v2.667h-2.667v2.666H20V16h2.667v8h-8v-2.667H12v-2.666H9.333V24h-8Z"/></svg></a>
+                <a href="https://www.faceit.com/en/players/Aeromorto" target="_blank" rel="noopener" title="FACEIT" aria-label="FACEIT"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.999 2.705a.167.167 0 00-.312-.1 1141.27 1141.27 0 00-6.053 9.375H.218c-.221 0-.301.282-.11.352 7.227 2.73 17.667 6.836 23.5 9.134.15.06.39-.08.39-.18z"/></svg></a>
+                <a href="https://yourgamerprofile.com/Aeromorto" target="_blank" rel="noopener" title="YourGamerProfile" aria-label="YourGamerProfile"><i class="fa-solid fa-user"></i></a>
+                <a href="https://onlyfans.com/aeromorto" target="_blank" rel="noopener" title="OnlyFans" aria-label="OnlyFans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 4.003h-4.015c-3.45 0-5.3.197-6.748 1.957a7.996 7.996 0 1 0 2.103 9.211c3.182-.231 5.39-2.134 6.085-5.173 0 0-2.399.585-4.43 0 4.018-.777 6.333-3.037 7.005-5.995zM5.61 11.999A2.391 2.391 0 0 1 9.28 9.97a2.966 2.966 0 0 1 2.998-2.528h.008c-.92 1.778-1.407 3.352-1.998 5.263A2.392 2.392 0 0 1 5.61 12Zm2.386-7.996a7.996 7.996 0 1 0 7.996 7.996 7.996 7.996 0 0 0-7.996-7.996Zm0 10.394A2.399 2.399 0 1 1 10.395 12a2.396 2.396 0 0 1-2.399 2.398Z"/></svg></a>
+                <a href="https://profile.playstation.com/Aeromorto" target="_blank" rel="noopener" title="PSN" aria-label="PSN"><i class="fa-brands fa-playstation"></i></a>
+                <a href="https://www.xbox.com/pt-BR/play/user/Aeromorto" target="_blank" rel="noopener" title="Xbox" aria-label="Xbox"><i class="fa-brands fa-xbox"></i></a>
+                <a href="https://steamcommunity.com/id/aeromorto/" target="_blank" rel="noopener" title="Steam" aria-label="Steam"><i class="fa-brands fa-steam"></i></a>
+                <a href="https://www.tiktok.com/@aeromorto" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://soundcloud.com/aeromorto" target="_blank" rel="noopener" title="SoundCloud" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+                <a href="https://www.reddit.com/user/aeromorto" target="_blank" rel="noopener" title="Reddit" aria-label="Reddit"><i class="fa-brands fa-reddit"></i></a>
+                <a href="https://t.me/aeromorto" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://www.threads.net/@aeromorto" target="_blank" rel="noopener" title="Threads" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://github.com/aeromorto" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://discord.com/users/aeromorto" target="_blank" rel="noopener" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            </nav>
+        </header>
+
+        <section class="section">
+            <h2 data-i18n="desktop">Desktop</h2>
+            <div class="gear">
+                <div class="gear-item">
+                    <img src="assets/products/cpu-9800x3d.jpg" alt="AMD Ryzen 9 9800X3D">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="cpu">Processador</span>
+                        <span class="gear-name">AMD Ryzen 9 9800X3D</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/gpu-9070xt.jpg" alt="PowerColor Hellhound RX 9070 XT">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="gpu">Placa de vídeo</span>
+                        <span class="gear-name">PowerColor Hellhound RX 9070 XT 16GB</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/ram.jpg" alt="Corsair Vengeance DDR5">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="ram">Memória RAM</span>
+                        <span class="gear-name">Corsair Vengeance 32GB DDR5</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/proart-x670e.jpg" alt="ASUS ProArt X670E-Creator WiFi">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="mb">Placa-mãe</span>
+                        <span class="gear-name">ASUS ProArt X670E-Creator WiFi</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/ryujin.jpg" alt="ASUS ROG Ryujin III 360">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="cooler">Watercooler</span>
+                        <span class="gear-name">ASUS ROG Ryujin III 360mm</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/ssd-4tb.jpg" alt="WD Blue SN5000 4TB">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="ssd">SSD</span>
+                        <span class="gear-name">WD Blue SN5000 4TB</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/case-xprotoz.png" alt="XTIA X-Proto-Z">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="case">Gabinete</span>
+                        <span class="gear-name">XTIA X-Proto-Z</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 data-i18n="peripherals">Periféricos</h2>
+            <div class="gear">
+                <div class="gear-item">
+                    <img src="assets/products/aw2523hf.jpg" alt="Alienware 25 360Hz">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="monitor">Monitor</span>
+                        <span class="gear-name">Alienware 25" 360Hz</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/keyboard.jpg" alt="SteelSeries Apex Pro TKL Gen 3">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="keyboard">Teclado</span>
+                        <span class="gear-name">SteelSeries Apex Pro TKL Gen 3</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/mouse.jpg" alt="Razer DeathAdder V4 Pro">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="mouse">Mouse</span>
+                        <span class="gear-name">Razer DeathAdder V4 Pro</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/sp005-hero.png" alt="Wallhack SP-005">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="mousepad">Mousepad de vidro</span>
+                        <span class="gear-name">Wallhack SP-005</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/sleeve-column-black.jpg" alt="Wallhack Sleeve Column Black">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="sleeve">Manguito</span>
+                        <span class="gear-name">Wallhack Sleeve Column Black</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 data-i18n="audio">Áudio</h2>
+            <div class="gear">
+                <div class="gear-item">
+                    <img src="assets/products/airpods-pro3.jpg" alt="Apple AirPods Pro 3">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="earbuds">Fones</span>
+                        <span class="gear-name">Apple AirPods Pro 3</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/quadcast2s.jpg" alt="HyperX QuadCast 2 S">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="mic">Microfone</span>
+                        <span class="gear-name">HyperX QuadCast 2 S</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/aura5.png" alt="Harman/Kardon Aura Studio 5">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="speaker">Caixa de som</span>
+                        <span class="gear-name">Harman/Kardon Aura Studio 5</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 data-i18n="consoles">Consoles</h2>
+            <div class="gear">
+                <div class="gear-item">
+                    <img src="assets/products/xbox-x-kabum.jpg" alt="Xbox Series X">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="console">Console</span>
+                        <span class="gear-name">Xbox Series X</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/xbox-s-black2.png" alt="Xbox Series S Carbon Black">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="console">Console</span>
+                        <span class="gear-name">Xbox Series S</span>
+                    </div>
+                </div>
+                <div class="gear-item">
+                    <img src="assets/products/samsung65.jpg" alt="Samsung 65 4K 120Hz">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="tv">TV</span>
+                        <span class="gear-name">Samsung 65" 4K 120Hz</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <p class="contact"><span data-i18n="contact">Contato:</span> <a href="mailto:aeromorto@icloud.com">aeromorto@icloud.com</a></p>
+    </div>
+
+    <script>
+        var I18N = {
+            pt: {
+                enter: "clique para entrar",
+                subtitle: "Mídias sociais e games",
+                denmark: "Dinamarca",
+                socials: "Redes",
+                desktop: "Desktop",
+                peripherals: "Periféricos",
+                audio: "Áudio",
+                consoles: "Consoles",
+                cpu: "Processador",
+                gpu: "Placa de vídeo",
+                ram: "Memória RAM",
+                mb: "Placa-mãe",
+                cooler: "Watercooler",
+                ssd: "SSD",
+                case: "Gabinete",
+                monitor: "Monitor",
+                keyboard: "Teclado",
+                mouse: "Mouse",
+                mousepad: "Mousepad de vidro",
+                sleeve: "Manguito",
+                earbuds: "Fones",
+                mic: "Microfone",
+                speaker: "Caixa de som",
+                console: "Console",
+                tv: "TV",
+                contact: "Contato:",
+                views: "Visitantes",
+                online: "Online",
+                prev: "Reiniciar",
+                play: "Play",
+                next: "Loop",
+                lang: "Traduzir para inglês"
+            },
+            en: {
+                enter: "click to enter",
+                subtitle: "Social Media & Gaming",
+                denmark: "Denmark",
+                socials: "Links",
+                desktop: "Desktop",
+                peripherals: "Peripherals",
+                audio: "Audio",
+                consoles: "Consoles",
+                cpu: "Processor",
+                gpu: "Graphics card",
+                ram: "Memory",
+                mb: "Motherboard",
+                cooler: "AIO cooler",
+                ssd: "SSD",
+                case: "Case",
+                monitor: "Monitor",
+                keyboard: "Keyboard",
+                mouse: "Mouse",
+                mousepad: "Glass mousepad",
+                sleeve: "Sleeve",
+                earbuds: "Earbuds",
+                mic: "Microphone",
+                speaker: "Speaker",
+                console: "Console",
+                tv: "TV",
+                contact: "Contact:",
+                views: "Visitors",
+                online: "Online",
+                prev: "Restart",
+                play: "Play",
+                next: "Loop",
+                lang: "Translate to Portuguese"
+            }
+        };
+        function detectLang() {
+            var saved = localStorage.getItem("aeromorto-lang");
+            if (saved === "en" || saved === "pt") return saved;
+            var list = (navigator.languages || []).slice();
+            if (navigator.language) list.push(navigator.language);
+            if (navigator.userLanguage) list.push(navigator.userLanguage);
+            for (var i = 0; i < list.length; i++) {
+                if (/^pt/i.test(list[i] || "")) return "pt";
+            }
+            return "en";
+        }
+        var lang = detectLang();
+
+        function applyLang() {
+            var pack = I18N[lang];
+            document.documentElement.lang = lang === "pt" ? "pt-br" : "en";
+            document.querySelectorAll("[data-i18n]").forEach(function (el) {
+                var key = el.getAttribute("data-i18n");
+                if (pack[key]) el.textContent = pack[key];
+            });
+            document.querySelectorAll("[data-i18n-title]").forEach(function (el) {
+                var key = el.getAttribute("data-i18n-title");
+                if (pack[key]) el.setAttribute("title", pack[key]);
+            });
+            document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+                var key = el.getAttribute("data-i18n-aria");
+                if (pack[key]) el.setAttribute("aria-label", pack[key]);
+            });
+            document.getElementById("langFrom").textContent = lang === "pt" ? "PT" : "EN";
+            document.getElementById("langTo").textContent = lang === "pt" ? "EN" : "PT";
+            document.getElementById("langFrom").classList.add("on");
+            document.getElementById("langTo").classList.remove("on");
+            document.getElementById("langBtn").setAttribute("aria-label", pack.lang);
+        }
+
+        document.getElementById("langBtn").addEventListener("click", function (e) {
+            e.stopPropagation();
+            lang = lang === "pt" ? "en" : "pt";
+            localStorage.setItem("aeromorto-lang", lang);
+            applyLang();
+        });
+        applyLang();
+
+        var VOLUME = 0.18;
+        var audio = document.getElementById("bgm");
+        var seek = document.getElementById("seek");
+        var tCur = document.getElementById("tCur");
+        var tEnd = document.getElementById("tEnd");
+        var playBtn = document.getElementById("playBtn");
+        var playerEl = document.getElementById("player");
+        var dragging = false;
+        audio.loop = true;
+        audio.volume = VOLUME;
+        audio.setAttribute("playsinline", "");
+        audio.setAttribute("webkit-playsinline", "true");
+
+        function fmt(t) {
+            t = Math.max(0, Math.floor(t || 0));
+            return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0");
+        }
+        function setPlaying(on) {
+            playBtn.innerHTML = on
+                ? '<i class="fa-solid fa-pause"></i>'
+                : '<i class="fa-solid fa-play"></i>';
+            playerEl.classList.toggle("spinning", on);
+        }
+        function play() {
+            var p = audio.play();
+            if (p && p.then) p.then(function () { setPlaying(true); }).catch(function () { setPlaying(false); });
+            else setPlaying(!audio.paused);
+        }
+        function pause() {
+            audio.pause();
+            setPlaying(false);
+        }
+        function toggle() {
+            if (audio.paused) play();
+            else pause();
+        }
+
+        audio.addEventListener("loadedmetadata", function () {
+            if (audio.duration && isFinite(audio.duration)) {
+                seek.max = audio.duration;
+                tEnd.textContent = fmt(audio.duration);
+            }
+        });
+        audio.addEventListener("timeupdate", function () {
+            if (!dragging) seek.value = audio.currentTime;
+            tCur.textContent = fmt(audio.currentTime);
+        });
+        audio.addEventListener("play", function () { setPlaying(true); });
+        audio.addEventListener("pause", function () { setPlaying(false); });
+        audio.addEventListener("ended", function () {
+            audio.currentTime = 0;
+            play();
+        });
+
+        seek.addEventListener("input", function () {
+            dragging = true;
+            tCur.textContent = fmt(seek.value);
+        });
+        seek.addEventListener("change", function () {
+            audio.currentTime = Number(seek.value);
+            dragging = false;
+        });
+
+        playBtn.addEventListener("click", toggle);
+        document.getElementById("vinylBtn").addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (window.matchMedia("(hover: hover)").matches) toggle();
+            else playerEl.classList.toggle("open");
+        });
+        document.addEventListener("click", function () {
+            playerEl.classList.remove("open");
+        });
+        playerEl.addEventListener("click", function (e) { e.stopPropagation(); });
+
+        document.getElementById("gate").addEventListener("click", function () {
+            this.classList.add("gone");
+            document.body.classList.add("entered");
+            document.getElementById("player").classList.add("show");
+            audio.currentTime = 0;
+            play();
+        });
+    </script>
 </body>
 </html>
