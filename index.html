@@ -200,11 +200,23 @@
             justify-self: center;
             border-right: none;
         }
+        a.gear-item {
+            color: inherit;
+            text-decoration: none;
+        }
+        a.gear-item:hover .gear-name {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        a.gear-item:focus-visible {
+            outline: 1px solid #888;
+            outline-offset: -2px;
+        }
         .gear-item img {
             width: 48px;
             height: 48px;
             object-fit: contain;
-            background: #0a0a0a;
+            background: #fff;
             border-radius: 10px;
             flex-shrink: 0;
         }
@@ -584,55 +596,55 @@
         <section class="section">
             <h2 data-i18n="desktop">Desktop</h2>
             <div class="gear">
-                <div class="gear-item">
-                    <img src="assets/products/cpu-9800x3d.jpg" alt="AMD Ryzen 9 9800X3D">
+                <a class="gear-item" href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html" target="_blank" rel="noopener">
+                    <img src="assets/products/cpu-9900x3d.jpg" alt="AMD Ryzen 9 9900X3D">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="cpu">Processador</span>
-                        <span class="gear-name">AMD Ryzen 9 9800X3D</span>
+                        <span class="gear-name">AMD Ryzen 9 9900X3D</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://www.powercolor.com/product-detail211.htm" target="_blank" rel="noopener">
                     <img src="assets/products/gpu-9070xt.jpg" alt="PowerColor Hellhound RX 9070 XT">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="gpu">Placa de vídeo</span>
                         <span class="gear-name">PowerColor Hellhound RX 9070 XT 16GB</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://www.corsair.com/us/en/p/memory/cmk32gx5m2x7200c34/vengeance-32gb-2x16gb-ddr5-dram-7200mhz-c34-memory-kit-black-cmk32gx5m2x7200c34" target="_blank" rel="noopener">
                     <img src="assets/products/ram.jpg" alt="Corsair Vengeance DDR5">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="ram">Memória RAM</span>
                         <span class="gear-name">Corsair Vengeance 32GB DDR5</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://www.asus.com/us/motherboards-components/motherboards/proart/proart-x670e-creator-wifi/" target="_blank" rel="noopener">
                     <img src="assets/products/proart-x670e.jpg" alt="ASUS ProArt X670E-Creator WiFi">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mb">Placa-mãe</span>
                         <span class="gear-name">ASUS ProArt X670E-Creator WiFi</span>
                     </div>
-                </div>
-                <div class="gear-item">
-                    <img src="assets/products/ryujin.jpg" alt="ASUS ROG Ryujin III 360">
+                </a>
+                <a class="gear-item" href="https://rog.asus.com/cooling/cpu-liquid-coolers/rog-ryujin/rog-ryujin-iii-360-argb/" target="_blank" rel="noopener">
+                    <img src="assets/products/ryujin.jpg" alt="ASUS ROG Ryujin III 360 ARGB">
                     <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="cooler">Watercooler</span>
-                        <span class="gear-name">ASUS ROG Ryujin III 360mm</span>
+                        <span class="gear-cat" data-i18n="cooler">Water cooler</span>
+                        <span class="gear-name">ASUS ROG Ryujin III 360 ARGB</span>
                     </div>
-                </div>
-                <div class="gear-item">
-                    <img src="assets/products/ssd-4tb.jpg" alt="WD Blue SN5000 4TB">
+                </a>
+                <a class="gear-item" href="https://www.sandisk.com/products/ssd/internal-ssd/wd-black-sn7100-nvme-internal-ssd?sku=WDS400T4X0E-00CJA0" target="_blank" rel="noopener">
+                    <img src="assets/products/ssd-sn7100.jpg" alt="WD Black SN7100 4TB">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="ssd">SSD</span>
-                        <span class="gear-name">WD Blue SN5000 4TB</span>
+                        <span class="gear-name">WD Black SN7100 4TB</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://www.xtia.design/products/new-product-xtia-xporot-z-matx-open-frame?variant=45078307274952" target="_blank" rel="noopener">
                     <img src="assets/products/case-xprotoz.png" alt="XTIA X-Proto-Z">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="case">Gabinete</span>
                         <span class="gear-name">XTIA X-Proto-Z</span>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -646,86 +658,86 @@
                         <span class="gear-name">Alienware 25" 360Hz</span>
                     </div>
                 </div>
-                <div class="gear-item">
+                <a class="gear-item" href="https://steelseries.com/gaming-keyboards/apex-pro-gen-3?connectivityType=wired&amp;color=black&amp;keyboardSize=tkl&amp;keyboardLanguage=english" target="_blank" rel="noopener">
                     <img src="assets/products/keyboard.jpg" alt="SteelSeries Apex Pro TKL Gen 3">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="keyboard">Teclado</span>
                         <span class="gear-name">SteelSeries Apex Pro TKL Gen 3</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://www.razer.com/gaming-mice/razer-deathadder-v4-pro" target="_blank" rel="noopener">
                     <img src="assets/products/mouse.jpg" alt="Razer DeathAdder V4 Pro">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mouse">Mouse</span>
                         <span class="gear-name">Razer DeathAdder V4 Pro</span>
                     </div>
-                </div>
-                <div class="gear-item">
-                    <img src="assets/products/sp005-hero.png" alt="Wallhack SP-005">
+                </a>
+                <a class="gear-item" href="https://wallhack.com/products/sp-005-black" target="_blank" rel="noopener">
+                    <img src="assets/products/sp005.jpg" alt="Wallhack SP-005">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mousepad">Mousepad de vidro</span>
                         <span class="gear-name">Wallhack SP-005</span>
                     </div>
-                </div>
-                <div class="gear-item">
-                    <img src="assets/products/sleeve-column-black.jpg" alt="Wallhack Sleeve Column Black">
+                </a>
+                <a class="gear-item" href="https://wallhack.com/products/pro-sleeve" target="_blank" rel="noopener">
+                    <img src="assets/products/sleeve-pro.jpg" alt="Wallhack Pro Sleeve">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="sleeve">Manguito</span>
-                        <span class="gear-name">Wallhack Sleeve Column Black</span>
+                        <span class="gear-name">Wallhack Pro Sleeve</span>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
         <section class="section">
             <h2 data-i18n="audio">Áudio</h2>
             <div class="gear">
-                <div class="gear-item">
+                <a class="gear-item" href="https://www.apple.com/airpods-pro/" target="_blank" rel="noopener">
                     <img src="assets/products/airpods-pro3.jpg" alt="Apple AirPods Pro 3">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="earbuds">Fones</span>
                         <span class="gear-name">Apple AirPods Pro 3</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://hyperx.com/products/hyperx-quadcast-2-s-usb-microphone" target="_blank" rel="noopener">
                     <img src="assets/products/quadcast2s.jpg" alt="HyperX QuadCast 2 S">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mic">Microfone</span>
                         <span class="gear-name">HyperX QuadCast 2 S</span>
                     </div>
-                </div>
-                <div class="gear-item">
+                </a>
+                <a class="gear-item" href="https://global.harmankardon.com/bluetooth-speakers/AURA-STUDIO-5.html" target="_blank" rel="noopener">
                     <img src="assets/products/aura5.png" alt="Harman/Kardon Aura Studio 5">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="speaker">Caixa de som</span>
                         <span class="gear-name">Harman/Kardon Aura Studio 5</span>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
         <section class="section">
             <h2 data-i18n="consoles">Consoles</h2>
             <div class="gear">
-                <div class="gear-item">
+                <a class="gear-item" href="https://www.xbox.com/en-US/consoles/xbox-series-x" target="_blank" rel="noopener">
                     <img src="assets/products/xbox-x-kabum.jpg" alt="Xbox Series X">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="console">Console</span>
                         <span class="gear-name">Xbox Series X</span>
                     </div>
-                </div>
-                <div class="gear-item">
-                    <img src="assets/products/xbox-s-black2.png" alt="Xbox Series S Carbon Black">
+                </a>
+                <a class="gear-item" href="https://www.xbox.com/en-US/accessories/controllers/elite-wireless-controller-series-2" target="_blank" rel="noopener">
+                    <img src="assets/products/elite-series-2.jpg" alt="Xbox Elite Series 2">
                     <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="console">Console</span>
-                        <span class="gear-name">Xbox Series S</span>
+                        <span class="gear-cat" data-i18n="controller">Controle</span>
+                        <span class="gear-name">Xbox Elite Series 2</span>
                     </div>
-                </div>
+                </a>
                 <div class="gear-item">
-                    <img src="assets/products/samsung65.jpg" alt="Samsung 65 4K 120Hz">
+                    <img src="assets/products/samsung65.jpg" alt="Samsung 65 OLED 4K 120Hz">
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="tv">TV</span>
-                        <span class="gear-name">Samsung 65" 4K 120Hz</span>
+                        <span class="gear-name">Samsung 65" OLED 4K 120Hz</span>
                     </div>
                 </div>
             </div>
@@ -749,7 +761,7 @@
                 gpu: "Placa de vídeo",
                 ram: "Memória RAM",
                 mb: "Placa-mãe",
-                cooler: "Watercooler",
+                cooler: "Water cooler",
                 ssd: "SSD",
                 case: "Gabinete",
                 monitor: "Monitor",
@@ -761,6 +773,7 @@
                 mic: "Microfone",
                 speaker: "Caixa de som",
                 console: "Console",
+                controller: "Controle",
                 tv: "TV",
                 contact: "Contato:",
                 views: "Visitantes",
@@ -783,7 +796,7 @@
                 gpu: "Graphics card",
                 ram: "Memory",
                 mb: "Motherboard",
-                cooler: "AIO cooler",
+                cooler: "Water cooler",
                 ssd: "SSD",
                 case: "Case",
                 monitor: "Monitor",
@@ -795,6 +808,7 @@
                 mic: "Microphone",
                 speaker: "Speaker",
                 console: "Console",
+                controller: "Controller",
                 tv: "TV",
                 contact: "Contact:",
                 views: "Visitors",
