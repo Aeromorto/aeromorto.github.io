@@ -27,7 +27,7 @@
         }
         body {
             min-height: 100vh;
-            padding: 48px 20px 80px;
+            padding: 52.8px 22px 88px;
         }
         body::before {
             content: "";
@@ -42,10 +42,10 @@
         .wrap {
             position: relative;
             z-index: 1;
-            max-width: 560px;
+            max-width: 1180px;
             margin: 0 auto;
             opacity: 0;
-            transform: scale(0.86) translateY(28px);
+            transform: scale(0.86) translateY(30.8px);
             filter: blur(16px);
         }
         body.entered .wrap {
@@ -60,89 +60,78 @@
         }
         .profile {
             text-align: center;
-            margin-bottom: 42px;
-        }
-        .avatar-wrap {
-            position: relative;
-            display: inline-block;
-        }
-        .avatar {
-            width: 93px;
-            height: 93px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #333;
-            display: block;
-        }
-        .status {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            right: 3px;
-            bottom: 3px;
-            border: 2px solid #0a0a0a;
-            border-radius: 50%;
-            background: #22c55e;
-            box-shadow: none;
-            pointer-events: none;
+            margin-bottom: 46.2px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 30.8px;
             font-weight: 650;
             letter-spacing: -0.03em;
-            margin: 16px 0 6px;
+            margin: 17.6px 0 6.6px;
             text-shadow: 0 2px 16px rgba(0,0,0,.85);
         }
         .subtitle {
             color: var(--muted);
-            font-size: 14px;
+            font-size: 15.4px;
             margin: 0;
             text-shadow: 0 1px 10px rgba(0,0,0,.8);
         }
         .location {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 8px;
             color: #c4c4c4;
-            font-size: 13px;
-            margin: 8px 0 0;
+            font-size: 14.3px;
+            line-height: 1;
+            margin: 8.8px 0 0;
+            padding: 0 2.2px;
             text-shadow: 0 1px 8px rgba(0,0,0,.8);
         }
         .location img {
-            width: 18px;
-            height: 13px;
-            border-radius: 2px;
+            display: block;
+            width: 19.8px;
+            height: 14.3px;
+            border-radius: 2.2px;
             object-fit: cover;
+            flex-shrink: 0;
         }
-        .location .sep { color: #666; }
+        .location .sep {
+            color: #666;
+            line-height: 1;
+        }
         .views {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 5.5px;
             color: #c4c4c4;
-            font-size: 13px;
+            font-size: 14.3px;
+            line-height: 1;
             white-space: nowrap;
         }
-        .views i { font-size: 12px; }
+        .views .view-mark {
+            display: block;
+            width: 16.5px;
+            height: 11px;
+            flex: 0 0 auto;
+        }
         .socials {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin: 18px 0 0;
+            gap: 8.8px;
+            margin: 19.8px 0 0;
         }
         .socials a {
-            width: 36px;
-            height: 36px;
+            width: 39.6px;
+            height: 39.6px;
             display: grid;
             place-items: center;
             color: #ddd;
             background: rgba(12, 12, 12, 0.9);
             border: 1px solid #3a3a3a;
-            border-radius: 10px;
+            border-radius: 11px;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16.5px;
             transition: color 0.15s, border-color 0.15s, background 0.15s;
         }
         .socials a:hover {
@@ -150,55 +139,77 @@
             border-color: #888;
             background: #1a1a1a;
         }
+        .socials a i,
+        .socials a svg,
+        .location img {
+            transition: transform 0.18s ease;
+        }
+        .socials a:hover i,
+        .socials a:hover svg,
+        .socials a:focus-visible i,
+        .socials a:focus-visible svg,
+        .location img:hover { transform: scale(1.12); }
         .socials a svg {
-            width: 15px;
-            height: 15px;
+            width: 16.5px;
+            height: 16.5px;
             display: block;
             fill: currentColor;
         }
         .section {
-            margin: 0 0 36px;
+            margin: 0 0 39.6px;
         }
         .section h2 {
-            font-size: 12px;
+            font-size: 22px;
+            font-weight: 650;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #e8e8e8;
+            margin: 0 0 14px;
+            padding: 0 2.2px;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            column-gap: 8px;
+            row-gap: 22px;
+        }
+        .group {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: span 2;
+            row-gap: 8.8px;
+            align-content: start;
+        }
+        .group-room { grid-column: 1 / -1; }
+        .group h3 {
+            grid-column: 1 / -1;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #c8c8c8;
-            margin: 0 0 12px;
-            padding: 0 2px;
-            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+            color: #9a9a9a;
+            margin: 0;
+            padding: 0 2.2px;
         }
         .gear {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            grid-template-columns: subgrid;
+            grid-column: 1 / -1;
+            row-gap: 8px;
         }
         .gear-item {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 10px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 2.2px;
+            padding: 13.2px 11px;
             min-width: 0;
-            border-bottom: 1px solid #1c1c1c;
-        }
-        .gear-item:nth-child(odd) {
-            border-right: 1px solid #1c1c1c;
-        }
-        .gear-item:last-child,
-        .gear-item:nth-child(odd):nth-last-child(2) {
-            border-bottom: none;
-        }
-        .gear-item:nth-child(odd):last-child {
-            grid-column: 1 / -1;
-            width: 50%;
-            justify-self: center;
-            border-right: none;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
         a.gear-item {
             color: inherit;
@@ -206,47 +217,200 @@
         }
         a.gear-item:hover .gear-name {
             text-decoration: underline;
-            text-underline-offset: 2px;
+            text-underline-offset: 2.2px;
         }
         a.gear-item:focus-visible {
             outline: 1px solid #888;
             outline-offset: -2px;
         }
         .gear-item img {
-            width: 55.2px;
-            height: 55.2px;
+            width: 100%;
+            height: 151.2px;
             object-fit: contain;
             background: #fff;
-            border-radius: 10px;
+            border-radius: 11px;
             flex-shrink: 0;
+            margin-bottom: 6.6px;
+            transition: transform 0.18s ease;
         }
+        .gear-item:hover img,
+        .gear-item:focus-visible img { transform: scale(1.08); }
         .gear-meta {
             min-width: 0;
         }
         .gear-cat {
             display: block;
-            font-size: 10px;
+            font-size: 11px;
             color: #9a9a9a;
-            margin-bottom: 2px;
+            margin-bottom: 2.2px;
         }
         .gear-name {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-size: 12.5px;
+            display: block;
+            overflow: visible;
+            overflow-wrap: break-word;
+            font-size: 13.8px;
             font-weight: 560;
             line-height: 1.3;
             color: var(--soft);
         }
         .contact {
-            margin-top: 28px;
+            margin-top: 30.8px;
             text-align: center;
             color: #bbb;
-            font-size: 14px;
+            font-size: 15.4px;
             text-shadow: 0 1px 8px rgba(0,0,0,.8);
         }
         .contact a { color: #999; text-decoration: none; }
+        .inv-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 11px;
+            margin: 0 0 13.2px;
+        }
+        .inv-head h2 { margin: 0; }
+        .lib-head {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 10px;
+            margin: 0 0 14px;
+        }
+        .lib-head h2 { margin: 0; }
+        .lib-note {
+            color: #9a9a9a;
+            font-size: 13.2px;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+            line-height: 1.35;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .inv-total {
+            color: #fff;
+            font-size: 13.8px;
+            font-weight: 560;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            text-shadow: 0 1px 8px rgba(0,0,0,.8);
+        }
+        .inv,
+        .books {
+            display: grid;
+            gap: 8px;
+        }
+        .inv { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .books { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+        .inv-item,
+        .book {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2px;
+            padding: 13.2px 11px;
+            min-width: 0;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            color: inherit;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .inv-steam {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            border-color: #f2f2f2;
+            background: rgba(255, 255, 255, 0.07);
+        }
+        .steam-mark {
+            font-size: 42px;
+            color: #fff;
+            line-height: 1;
+            transition: transform 0.18s ease;
+        }
+        .inv-steam:hover .steam-mark,
+        .inv-steam:focus-visible .steam-mark { transform: scale(1.08); }
+        .inv-steam .inv-name {
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        .inv-item:hover .inv-name {
+            text-decoration: underline;
+            text-underline-offset: 2.2px;
+        }
+        .inv-item:focus-visible {
+            outline: 1px solid #888;
+            outline-offset: -2px;
+        }
+        .inv-img {
+            height: 104px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 6.6px;
+        }
+        .inv-img img {
+            max-width: 100%;
+            max-height: 104px;
+            object-fit: contain;
+            transition: transform 0.18s ease;
+        }
+        .inv-item:hover .inv-img img,
+        .inv-item:focus-visible .inv-img img { transform: scale(1.08); }
+        .book-cover {
+            height: 168px;
+            display: grid;
+            place-items: center;
+            background: transparent;
+            margin-bottom: 8px;
+            overflow: visible;
+        }
+        .book-cover img {
+            max-width: 100%;
+            max-height: 168px;
+            object-fit: contain;
+            transition: transform 0.18s ease;
+        }
+        .book:hover .book-cover img,
+        .book:focus-visible .book-cover img { transform: scale(1.06); }
+        .book-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 13.2px;
+            font-weight: 560;
+            line-height: 1.3;
+            color: var(--soft);
+        }
+        .book:hover .book-title { text-decoration: underline; text-underline-offset: 2.2px; }
+        .book-meta {
+            font-size: 11px;
+            color: #9a9a9a;
+        }
+        .inv-name {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 13.8px;
+            font-weight: 560;
+            line-height: 1.3;
+            color: var(--soft);
+        }
+        .inv-meta {
+            font-size: 11px;
+            color: #9a9a9a;
+            font-variant-numeric: tabular-nums;
+        }
+        .inv-price {
+            margin-top: 6.6px;
+            font-size: 13.8px;
+            font-weight: 560;
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+        }
         #gate {
             position: fixed;
             inset: 0;
@@ -273,24 +437,24 @@
             opacity: 0;
         }
         .gate-inner h1 {
-            font-size: 32px;
-            margin: 0 0 14px;
+            font-size: 35.2px;
+            margin: 0 0 15.4px;
         }
         .gate-inner span {
             color: #777;
-            font-size: 13px;
+            font-size: 14.3px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
         }
         .player {
             position: fixed;
-            left: 16px;
-            bottom: 16px;
+            left: 17.6px;
+            bottom: 17.6px;
             z-index: 20;
             display: none;
             align-items: center;
-            width: 44px;
-            height: 44px;
+            width: 48.4px;
+            height: 48.4px;
             padding: 0;
             overflow: hidden;
             border-radius: 50%;
@@ -309,9 +473,9 @@
         .player:hover,
         .player.open,
         .player:focus-within {
-            width: min(340px, calc(100vw - 32px));
-            height: 56px;
-            padding: 6px 10px 6px 6px;
+            width: min(374px, calc(100vw - 35.2px));
+            height: 61.6px;
+            padding: 6.6px 11px 6.6px 6.6px;
             border-radius: 999px;
             background: rgba(12, 12, 12, 0.94);
             border-color: #3a3a3a;
@@ -319,8 +483,8 @@
             -webkit-backdrop-filter: blur(14px);
         }
         .vinyl {
-            width: 44px;
-            height: 44px;
+            width: 48.4px;
+            height: 48.4px;
             border: 0;
             padding: 0;
             border-radius: 50%;
@@ -333,14 +497,14 @@
                     #171717 1px 2px);
             box-shadow:
                 inset 0 0 0 1px #2a2a2a,
-                inset 0 0 0 7px rgba(0,0,0,.35);
+                inset 0 0 0 7.7px rgba(0,0,0,.35);
             overflow: hidden;
         }
         .player:hover .vinyl,
         .player.open .vinyl,
         .player:focus-within .vinyl {
-            width: 44px;
-            height: 44px;
+            width: 48.4px;
+            height: 48.4px;
         }
         .vinyl-label {
             position: absolute;
@@ -353,9 +517,9 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            width: 6px;
-            height: 6px;
-            margin: -3px 0 0 -3px;
+            width: 6.6px;
+            height: 6.6px;
+            margin: -3.3px 0 0 -3.3px;
             border-radius: 50%;
             background: #050505;
             box-shadow: 0 0 0 1px #444;
@@ -370,11 +534,11 @@
         .player-body {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 8.8px;
             min-width: 0;
             flex: 1;
             opacity: 0;
-            margin-left: 8px;
+            margin-left: 8.8px;
             transition: opacity 0.2s ease 0.12s;
         }
         .player:hover .player-body,
@@ -387,7 +551,7 @@
             flex: 1;
         }
         .player-title {
-            font-size: 13px;
+            font-size: 14.3px;
             font-weight: 600;
             color: #fff;
             white-space: nowrap;
@@ -395,9 +559,9 @@
             text-overflow: ellipsis;
         }
         .player-artist {
-            font-size: 11px;
+            font-size: 12.1px;
             color: #888;
-            margin: 1px 0 6px;
+            margin: 1.1px 0 6.6px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -405,20 +569,20 @@
         .player-bar {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 6.6px;
         }
         .player-bar span {
-            font-size: 10px;
+            font-size: 11px;
             color: #777;
             font-variant-numeric: tabular-nums;
-            min-width: 28px;
+            min-width: 30.8px;
         }
         .player-bar span:last-child { text-align: right; }
         .player-bar input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
             flex: 1;
-            height: 4px;
+            height: 4.4px;
             border-radius: 99px;
             background: #333;
             outline: none;
@@ -426,23 +590,23 @@
         .player-bar input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 10px;
-            height: 10px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             background: #fff;
             cursor: pointer;
         }
         .player-bar input[type="range"]::-moz-range-thumb {
-            width: 10px;
-            height: 10px;
+            width: 11px;
+            height: 11px;
             border: 0;
             border-radius: 50%;
             background: #fff;
             cursor: pointer;
         }
         #playBtn {
-            width: 32px;
-            height: 32px;
+            width: 35.2px;
+            height: 35.2px;
             border: 0;
             background: transparent;
             color: #ddd;
@@ -450,27 +614,27 @@
             display: grid;
             place-items: center;
             border-radius: 50%;
-            font-size: 14px;
+            font-size: 15.4px;
             flex-shrink: 0;
         }
         #playBtn:hover { color: #fff; background: #222; }
         .lang {
             position: fixed;
-            top: 14px;
-            right: 14px;
+            top: 15.4px;
+            right: 15.4px;
             z-index: 50;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 8.8px;
             background: rgba(12, 12, 12, 0.9);
             border: 1px solid #3a3a3a;
             border-radius: 999px;
-            padding: 7px 12px;
+            padding: 7.7px 13.2px;
             color: #ddd;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13.2px;
             font-weight: 650;
             letter-spacing: 0.06em;
             -webkit-tap-highlight-color: transparent;
@@ -479,27 +643,40 @@
         .lang .code { color: #666; }
         .lang .code.on { color: #fff; }
         .lang i {
-            font-size: 11px;
+            font-size: 12.1px;
             color: #555;
         }
-        @media (max-width: 560px) {
-            body { padding: 56px 14px 80px; }
-            h1 { font-size: 24px; }
-            .gate-inner h1 { font-size: 26px; }
-            .avatar { width: 81px; height: 81px; }
-            .status { width: 16px; height: 16px; }
-            .socials { gap: 7px; }
-            .socials a { width: 34px; height: 34px; }
-            .gear-item { padding: 10px 8px; gap: 8px; }
-            .gear-item img { width: 46px; height: 46px; }
-            .gear-name { font-size: 11.5px; }
-            .gear-cat { font-size: 9px; }
-            .player { left: 12px; bottom: 12px; }
+        @media (max-width: 616px) {
+            body { padding: 61.6px 15.4px 88px; }
+            h1 { font-size: 26.4px; }
+            .gate-inner h1 { font-size: 28.6px; }
+            .socials { gap: 7.7px; }
+            .socials a { width: 37.4px; height: 37.4px; }
+            .gear-item { padding: 13.2px 11px; gap: 2.2px; }
+            .gear-item img { width: 100%; height: 118.8px; }
+            .gear-name { font-size: 12.7px; }
+            .gear-cat { font-size: 9.9px; }
+            .inv-img, .inv-img img { height: 88px; max-height: 88px; }
+            .inv-name, .inv-price, .inv-total, .book-title { font-size: 12.7px; }
+            .inv-meta, .book-meta { font-size: 9.9px; }
+            .book-cover, .book-cover img { height: 132px; max-height: 132px; }
+            .board { grid-template-columns: 1fr; gap: 18px; }
+            .group, .group-room { display: block; grid-column: auto; }
+            .group h3 { margin: 0 0 8.8px; }
+            .gear {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-column: auto;
+                gap: 8px;
+            }
+            .inv { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .books { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .player { left: 13.2px; bottom: 13.2px; }
             .player:hover,
             .player.open,
-            .player:focus-within { width: min(300px, calc(100vw - 24px)); }
-            .player-title { font-size: 12px; }
-            .lang { top: 10px; right: 10px; padding: 6px 10px; }
+            .player:focus-within { width: min(330px, calc(100vw - 26.4px)); }
+            .player-title { font-size: 13.2px; }
+            .lang { top: 11px; right: 11px; padding: 6.6px 11px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .wrap, .player.show, #gate, .gate-inner {
@@ -512,9 +689,22 @@
                 transform: none;
             }
             .player.show { opacity: 1; transform: none; }
+            .socials a i, .socials a svg, .location img,
+            .gear-item img, .inv-img img, .book-cover img, .steam-mark {
+                transition: none !important;
+                transform: none !important;
+            }
         }
-        @media (max-width: 380px) {
-            .gear-item:nth-child(odd):last-child { width: 100%; }
+        @media (max-width: 980px) {
+            .books { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .inv { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (max-width: 720px) {
+            .books { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .inv { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 480px) {
+            .books { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
     </style>
 </head>
@@ -554,10 +744,6 @@
 
     <div class="wrap">
         <header class="profile">
-            <div class="avatar-wrap">
-                <img class="avatar" src="assets/avatar.png" alt="Aeromorto">
-                <span class="status" data-i18n-title="online" title="Online"></span>
-            </div>
             <h1>@Aeromorto</h1>
             <p class="subtitle" data-i18n="subtitle">Social Media &amp; Gaming</p>
             <p class="location">
@@ -565,8 +751,8 @@
                 <span data-i18n="denmark">Dinamarca</span>
                 <span class="sep">|</span>
                 <span class="views" data-i18n-title="views" title="Visitantes">
-                    <i class="fa-solid fa-eye"></i>
-                    <span>8,322</span>
+                    <svg class="view-mark" viewBox="0 0 24 14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M1.2 7C3.6 3.1 7.4 1.2 12 1.2S20.4 3.1 22.8 7C20.4 10.9 16.6 12.8 12 12.8S3.6 10.9 1.2 7z"/><circle cx="12" cy="7" r="2.15" fill="currentColor"/></svg>
+                    <span id="viewCount">4.322</span>
                 </span>
             </p>
             <nav class="socials" data-i18n-aria="socials" aria-label="Redes">
@@ -593,8 +779,11 @@
             </nav>
         </header>
 
-        <section class="section">
-            <h2 data-i18n="desktop">Desktop</h2>
+        <section class="section" id="setup">
+            <h2 data-i18n="setup">Setup</h2>
+            <div class="board">
+            <div class="group">
+            <h3 data-i18n="desktop">Desktop</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html" target="_blank" rel="noopener">
                     <img src="assets/products/cpu-9900x3d.jpg" alt="AMD Ryzen 9 9900X3D">
@@ -634,22 +823,22 @@
                 <a class="gear-item" href="https://www.sandisk.com/products/ssd/internal-ssd/wd-black-sn7100-nvme-internal-ssd?sku=WDS400T4X0E-00CJA0" target="_blank" rel="noopener">
                     <img src="assets/products/ssd-sn7100.jpg" alt="WD Black SN7100 4TB">
                     <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="ssd">SSD</span>
+                        <span class="gear-cat" data-i18n="ssd">Armazenamento</span>
                         <span class="gear-name">WD Black SN7100 4TB</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.xtia.design/products/new-product-xtia-xporot-z-matx-open-frame?variant=45078307274952" target="_blank" rel="noopener">
                     <img src="assets/products/case-xprotoz.png" alt="XTIA X-Proto-Z">
                     <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="case">Gabinete</span>
+                        <span class="gear-cat" data-i18n="case">Gabinete (Open Build)</span>
                         <span class="gear-name">XTIA X-Proto-Z</span>
                     </div>
                 </a>
             </div>
-        </section>
+            </div>
 
-        <section class="section">
-            <h2 data-i18n="peripherals">Periféricos</h2>
+            <div class="group">
+            <h3 data-i18n="peripherals">Periféricos</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.dell.com/en-us/shop/alienware-25-gaming-monitor-aw2523hf/apd/210-bfed/monitors-monitor-accessories" target="_blank" rel="noopener">
                     <img src="assets/products/aw2523hf.jpg" alt="Alienware 25 360Hz">
@@ -686,19 +875,6 @@
                         <span class="gear-name">Wallhack Pro Sleeve</span>
                     </div>
                 </a>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 data-i18n="audio">Áudio</h2>
-            <div class="gear">
-                <a class="gear-item" href="https://www.razer.com/gaming-headsets/razer-blackshark-v3-pro" target="_blank" rel="noopener">
-                    <img src="assets/products/blackshark-v3-pro.jpg" alt="Razer BlackShark V3 Pro">
-                    <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="earbuds">Fones</span>
-                        <span class="gear-name">Razer BlackShark V3 Pro</span>
-                    </div>
-                </a>
                 <a class="gear-item" href="https://hyperx.com/products/hyperx-quadcast-2-s-usb-microphone" target="_blank" rel="noopener">
                     <img src="assets/products/quadcast2s.jpg" alt="HyperX QuadCast 2 S">
                     <div class="gear-meta">
@@ -706,18 +882,18 @@
                         <span class="gear-name">HyperX QuadCast 2 S</span>
                     </div>
                 </a>
-                <a class="gear-item" href="https://global.harmankardon.com/bluetooth-speakers/AURA-STUDIO-5.html" target="_blank" rel="noopener">
-                    <img src="assets/products/aura5.jpg" alt="Harman/Kardon Aura Studio 5">
+                <a class="gear-item" href="https://www.razer.com/gaming-headsets/razer-blackshark-v3-pro" target="_blank" rel="noopener">
+                    <img src="assets/products/blackshark-v3-pro.jpg" alt="Razer BlackShark V3 Pro">
                     <div class="gear-meta">
-                        <span class="gear-cat" data-i18n="speaker">Caixa de som</span>
-                        <span class="gear-name">Harman/Kardon Aura Studio 5</span>
+                        <span class="gear-cat" data-i18n="earbuds">Fones</span>
+                        <span class="gear-name">Razer BlackShark V3 Pro</span>
                     </div>
                 </a>
             </div>
-        </section>
+            </div>
 
-        <section class="section">
-            <h2 data-i18n="consoles">Consoles</h2>
+            <div class="group group-room">
+            <h3 data-i18n="consoles">Room</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.xbox.com/en-US/consoles/xbox-series-x" target="_blank" rel="noopener">
                     <img src="assets/products/xbox-x-kabum.jpg" alt="Xbox Series X">
@@ -740,7 +916,32 @@
                         <span class="gear-name">Samsung 65&quot; OLED 4K | 120hz</span>
                     </div>
                 </a>
+                <a class="gear-item" href="https://global.harmankardon.com/bluetooth-speakers/AURA-STUDIO-5.html" target="_blank" rel="noopener">
+                    <img src="assets/products/aura5.jpg" alt="Harman/Kardon Aura Studio 5">
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="speaker">Caixa de som</span>
+                        <span class="gear-name">Harman/Kardon Aura Studio 5</span>
+                    </div>
+                </a>
             </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="section" id="inventory">
+            <div class="inv-head">
+                <h2 data-i18n="inventory">Inventory</h2>
+                <span class="inv-total" id="invTotal" data-i18n-title="value" title="Valor"></span>
+            </div>
+            <div class="inv" id="invGrid"></div>
+        </section>
+
+        <section class="section" id="library">
+            <div class="lib-head">
+                <h2 data-i18n="library">Biblioteca</h2>
+                <span class="lib-note" data-i18n="libraryNote">(obras lidas até o presente momento)</span>
+            </div>
+            <div class="books" id="bookGrid"></div>
         </section>
 
         <p class="contact"><span data-i18n="contact">Contato:</span> <a href="mailto:aeromorto@icloud.com">aeromorto@icloud.com</a></p>
@@ -750,20 +951,25 @@
         var I18N = {
             pt: {
                 enter: "clique para entrar",
-                subtitle: "Redes sociais & Plataforma de jogos",
+                subtitle: "Mídia Sociais e Plataforma de Jogos",
                 denmark: "Dinamarca",
                 socials: "Redes",
                 desktop: "Desktop",
                 peripherals: "Periféricos",
-                audio: "Áudio",
-                consoles: "Consoles",
+                consoles: "Quarto",
+                setup: "Setup",
+                inventory: "Inventário",
+                library: "Biblioteca",
+                libraryNote: "(obras lidas até o presente momento)",
+                openInv: "Ir para o inventário",
+                value: "Valor",
                 cpu: "Processador",
                 gpu: "Placa de vídeo",
                 ram: "Memória RAM",
                 mb: "Placa-mãe",
                 cooler: "Water cooler",
-                ssd: "SSD",
-                case: "Gabinete",
+                ssd: "Armazenamento",
+                case: "Gabinete (Open Build)",
                 monitor: "Monitor",
                 keyboard: "Teclado",
                 mouse: "Mouse",
@@ -790,19 +996,24 @@
                 socials: "Links",
                 desktop: "Desktop",
                 peripherals: "Peripherals",
-                audio: "Audio",
-                consoles: "Consoles",
-                cpu: "Processor",
-                gpu: "Graphics card",
-                ram: "Memory",
+                consoles: "Room",
+                setup: "Setup",
+                inventory: "Inventory",
+                library: "Library",
+                libraryNote: "(works read up to the present)",
+                openInv: "Go to inventory",
+                value: "Value",
+                cpu: "CPU",
+                gpu: "GPU",
+                ram: "RAM",
                 mb: "Motherboard",
                 cooler: "Water cooler",
                 ssd: "SSD",
-                case: "Case",
+                case: "Case (Open Build)",
                 monitor: "Monitor",
                 keyboard: "Keyboard",
                 mouse: "Mouse",
-                mousepad: "Glass mousepad",
+                mousepad: "Glass pad",
                 sleeve: "Sleeve",
                 earbuds: "Headset",
                 mic: "Microphone",
@@ -852,6 +1063,524 @@
             document.getElementById("langFrom").classList.add("on");
             document.getElementById("langTo").classList.remove("on");
             document.getElementById("langBtn").setAttribute("aria-label", pack.lang);
+            renderViews();
+            renderInventory();
+            renderLibrary();
+        }
+
+        var VIEW_COUNTS = [4322, 5322, 6322, 7322, 8322, 9322];
+        var viewCount = VIEW_COUNTS[Math.floor(Math.random() * VIEW_COUNTS.length)];
+
+        function formatViews(n) {
+            var sep = lang === "pt" ? "." : ",";
+            var digits = String(n);
+            return digits.slice(0, -3) + sep + digits.slice(-3);
+        }
+
+        function renderViews() {
+            var el = document.getElementById("viewCount");
+            if (el) el.textContent = formatViews(viewCount);
+        }
+
+
+        var LOADOUT = [
+            {
+                        "id": "gloves",
+                        "name": "★ Sport Gloves | Nocts",
+                        "wearEn": "Field-Tested",
+                        "wearPt": "Testada em Campo",
+                        "float": "0.182927995920181274",
+                        "usd": 67800,
+                        "brl": 368983,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tk5UvzWCL2kpn2-DFk_OKherB0H_qSCXKR09F7teVgWiT9k08l5WrVnNeuI3qRaAEmCZJ0FuRYsRDsm9LnMryw71HfiooUmSn9hzQJsHg51Ex1iQ/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53357694176"
+            },
+            {
+                        "id": "m9",
+                        "name": "★ M9 Bayonet",
+                        "wearEn": "Not Painted",
+                        "wearPt": "Não pintada",
+                        "float": "",
+                        "usd": 86250,
+                        "brl": 469381,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XuWbwcuyMESA4Fdl-4nnpU7iQA3-kKnr8ytd6s2jMZtvIemcAGKEj7ojtOIwSnrrkEt25WiEw438cXuUaQB0WcBxFrUItxa6lNezMOKzsVPAy9USYWigJ8Q/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53868767494"
+            },
+            {
+                        "id": "awp",
+                        "name": "AWP | Graphite",
+                        "wearEn": "Factory New",
+                        "wearPt": "Nova de Fábrica",
+                        "float": "0.0531510189175605774",
+                        "usd": 14450,
+                        "brl": 78639,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_C9k7OC7ZbRhJc-RHGaGztF6ueZhW2e2k0l2sW_WzN7_cS6SbgV1CsF3TOEI4EOwloGzNLzg5g3fiIpHxC78kGoXuTqeOjwH/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53704826804"
+            },
+            {
+                        "id": "ak",
+                        "name": "AK-47 | Slate",
+                        "wearEn": "Minimal Wear",
+                        "wearPt": "Pouco Usada",
+                        "float": "0.134716063737869263",
+                        "usd": 816,
+                        "brl": 4443,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiVI0POlPPNSMOKcCGKD0ud5vuBlcCW6khUz_W3Sytb4cCqTOFUpWJtzTOUD5hPsw9a0Yrnrs1SK3ooXzy6shilM5311o7FVYrIufmI/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53845307165"
+            },
+            {
+                        "id": "deagle",
+                        "name": "Desert Eagle | Hypnotic",
+                        "wearEn": "Factory New",
+                        "wearPt": "Nova de Fábrica",
+                        "float": "0.0672165825963020325",
+                        "usd": 16405,
+                        "brl": 89279,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7vORfqF_NPmUAVicyOl-pK9qSyyywxgjtmnVytyocnLGPA4iWcYmRLYIu0S-xtbuMLjg51DXjoJC02yg2VjGnh4J/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_52877939559"
+            },
+            {
+                        "id": "sally",
+                        "name": "Getaway Sally | The Professionals",
+                        "wearEn": "",
+                        "wearPt": "",
+                        "float": "",
+                        "usd": 7990,
+                        "brl": 43487,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fgn8oYby8iRe_OGnZ6psLM-FD3Waj-0h4LM5H3jjzR9-4zmHzIuucXOWaAEkCsR5FrFcsEG5wNGzNeng71TAy9UScc7Ksy8/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_50131088497"
+            },
+            {
+                        "id": "ava",
+                        "name": "Special Agent Ava | FBI",
+                        "wearEn": "",
+                        "wearPt": "",
+                        "float": "",
+                        "usd": 2157,
+                        "brl": 11744,
+                        "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPLdXz6TkLdw5LY4Hnmwl0wktj7dn4r9I3OWPFApC5F1QeAO5xi4lIDiM_SiuVKk3V4ZcQ/360fx360f",
+                        "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_51846357564"
+            }
+];
+
+        var INVENTORY_TOTAL = { usd: 199330, brl: 1084798 };
+
+        function money(cents) {
+            var neg = cents < 0;
+            cents = Math.abs(cents);
+            var whole = String(Math.floor(cents / 100));
+            var frac = String(cents % 100).padStart(2, "0");
+            var sep = lang === "pt" ? "." : ",";
+            var grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+            return (neg ? "-" : "") + (lang === "pt" ? "R$ " + grouped + "," + frac : "$" + grouped + "." + frac);
+        }
+        function fmtFloat(raw) {
+            var n = Number(raw);
+            if (!isFinite(n)) return "";
+            return n.toFixed(8).replace(/0+$/, "").replace(/\.$/, "");
+        }
+        function renderInventory() {
+            var grid = document.getElementById("invGrid");
+            var totalEl = document.getElementById("invTotal");
+            if (!grid || !totalEl) return;
+            grid.textContent = "";
+            var key = lang === "pt" ? "brl" : "usd";
+            LOADOUT.forEach(function (item) {
+                var a = document.createElement("a");
+                a.className = "inv-item";
+                a.href = item.href;
+                a.target = "_blank";
+                a.rel = "noopener";
+                var imgWrap = document.createElement("span");
+                imgWrap.className = "inv-img";
+                var img = document.createElement("img");
+                img.src = item.icon;
+                img.alt = item.name;
+                imgWrap.appendChild(img);
+                var name = document.createElement("span");
+                name.className = "inv-name";
+                name.textContent = item.name;
+                a.appendChild(imgWrap);
+                a.appendChild(name);
+                var wear = lang === "pt" ? item.wearPt : item.wearEn;
+                if (wear) {
+                    var wearEl = document.createElement("span");
+                    wearEl.className = "inv-meta";
+                    wearEl.textContent = wear;
+                    a.appendChild(wearEl);
+                }
+                if (item.float) {
+                    var floatEl = document.createElement("span");
+                    floatEl.className = "inv-meta";
+                    floatEl.textContent = fmtFloat(item.float);
+                    a.appendChild(floatEl);
+                }
+                var price = document.createElement("span");
+                price.className = "inv-price";
+                price.textContent = money(item[key]);
+                a.appendChild(price);
+                grid.appendChild(a);
+            });
+            var steam = document.createElement("a");
+            steam.className = "inv-item inv-steam";
+            steam.href = "https://steamcommunity.com/id/Aeromorto/inventory/#730";
+            steam.target = "_blank";
+            steam.rel = "noopener";
+            var mark = document.createElement("i");
+            mark.className = "fa-brands fa-steam steam-mark";
+            mark.setAttribute("aria-hidden", "true");
+            var label = document.createElement("span");
+            label.className = "inv-name";
+            label.textContent = I18N[lang].openInv;
+            steam.appendChild(mark);
+            steam.appendChild(label);
+            grid.appendChild(steam);
+            var whole = INVENTORY_TOTAL && INVENTORY_TOTAL[key];
+            totalEl.textContent = whole ? money(whole) : "";
+        }
+
+        function loadPrices() {
+            fetch("assets/prices.json", { cache: "no-cache" }).then(function (response) {
+                if (!response.ok) throw new Error("prices");
+                return response.json();
+            }).then(function (data) {
+                if (!data) return;
+                var items = data.items;
+                if (items) {
+                    LOADOUT.forEach(function (item) {
+                        var row = items[item.id];
+                        if (!row) return;
+                        if (row.usd) item.usd = row.usd;
+                        if (row.brl) item.brl = row.brl;
+                    });
+                }
+                var inventory = data.inventory;
+                if (inventory && inventory.usd && inventory.brl) {
+                    INVENTORY_TOTAL = { usd: inventory.usd, brl: inventory.brl };
+                }
+                renderInventory();
+            }).catch(function () {});
+        }
+
+        var BOOKS = [
+            {
+                titlePt: "Os Protocolos dos Sábios de Sião",
+                titleEn: "The Protocols of the Elders of Zion",
+                authorPt: "Anônimo",
+                authorEn: "Anonymous",
+                year: 1903,
+                coverPt: "assets/books/protocols-en.png",
+                coverEn: "assets/books/protocols-en.png",
+                hrefPt: "https://www.amazon.com.br/Os-Protocolos-dos-S%C3%A1bios-Si%C3%A3o-ebook/dp/B0CMG65DTQ",
+                hrefEn: "https://archive.org/details/ProtocolsOfZionMarsden1934"
+            },
+            {
+                titlePt: "O Judeu Internacional",
+                titleEn: "The International Jew",
+                author: "Henry Ford",
+                year: 1920,
+                coverPt: "assets/books/ford-en.png",
+                coverEn: "assets/books/ford-en.png",
+                hrefPt: "https://archive.org/details/1922-complete-international-jew-i-ii-ii-iv",
+                hrefEn: "https://archive.org/details/1922-complete-international-jew-i-ii-ii-iv"
+            },
+            {
+                titlePt: "Bíblia do Rei James",
+                titleEn: "King James Bible",
+                authorPt: "Vários tradutores",
+                authorEn: "Various translators",
+                year: 1611,
+                coverPt: "assets/books/kjv.png",
+                coverEn: "assets/books/kjv.png",
+                hrefPt: "https://www.amazon.com.br/dp/6588364059",
+                hrefEn: "https://www.amazon.com/dp/1565631625"
+            },
+            {
+                titlePt: "A Lança do Destino",
+                titleEn: "The Spear of Destiny",
+                author: "Trevor Ravenscroft",
+                year: 1972,
+                coverPt: "assets/books/spear-en.png",
+                coverEn: "assets/books/spear-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/0877285470",
+                hrefEn: "https://www.amazon.com.br/dp/0877285470"
+            },
+            {
+                titlePt: "A Sociedade Industrial e Seu Futuro",
+                titleEn: "Industrial Society and Its Future",
+                author: "Ted Kaczynski",
+                year: 1995,
+                coverPt: "assets/books/isaif-pt.png",
+                coverEn: "assets/books/isaif-en.png",
+                hrefPt: "https://www.amazon.com/dp/1595948155",
+                hrefEn: "https://www.amazon.com/dp/1595948155"
+            },
+            {
+                titlePt: "A Fonte Oculta",
+                titleEn: "The Hidden Spring",
+                author: "Mark Solms",
+                year: 2021,
+                coverPt: "assets/books/solms-pt.png",
+                coverEn: "assets/books/solms-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8546906254",
+                hrefEn: "https://www.amazon.com/dp/1788162846"
+            },
+            {
+                titlePt: "The Secret World Government",
+                titleEn: "The Secret World Government",
+                author: "Arthur Cherep-Spiridovich",
+                year: 1926,
+                coverPt: "assets/books/secret-en.png",
+                coverEn: "assets/books/secret-en.png",
+                hrefPt: "https://www.amazon.com/dp/2925369898",
+                hrefEn: "https://www.amazon.com/dp/2925369898"
+            },
+            {
+                titlePt: "The Human Zoo",
+                titleEn: "The Human Zoo",
+                author: "Desmond Morris",
+                year: 1969,
+                coverPt: "assets/books/zoo-en.png",
+                coverEn: "assets/books/zoo-en.png",
+                hrefPt: "https://www.amazon.com/dp/0440339138",
+                hrefEn: "https://www.amazon.com/dp/0440339138"
+            },
+            {
+                titlePt: "Helplessness: On Depression, Development, and Death",
+                titleEn: "Helplessness: On Depression, Development, and Death",
+                author: "Martin Seligman",
+                year: 1975,
+                coverPt: "assets/books/help-en.png",
+                coverEn: "assets/books/help-en.png",
+                hrefPt: "https://www.amazon.com/dp/0716707519",
+                hrefEn: "https://www.amazon.com/dp/0716707519"
+            },
+            {
+                titlePt: "Minha Luta",
+                titleEn: "Mein Kampf",
+                author: "Adolf Hitler",
+                year: 1925,
+                coverPt: "assets/books/kampf-pt.png",
+                coverEn: "assets/books/kampf-en.png",
+                hrefPt: "https://www.estantevirtual.com.br/busca?q=minha+luta+hitler",
+                hrefEn: "https://www.amazon.com/dp/0395925037"
+            },
+            {
+                titlePt: "So Human an Animal",
+                titleEn: "So Human an Animal",
+                author: "René Dubos",
+                year: 1968,
+                coverPt: "assets/books/dubos-en.png",
+                coverEn: "assets/books/dubos-en.png",
+                hrefPt: "https://www.amazon.com/dp/0765804298",
+                hrefEn: "https://www.amazon.com/dp/0765804298"
+            },
+            {
+                titlePt: "A Técnica e o Desafio do Século",
+                titleEn: "The Technological Society",
+                author: "Jacques Ellul",
+                year: 1954,
+                coverPt: "assets/books/ellul-en.png",
+                coverEn: "assets/books/ellul-en.png",
+                hrefPt: "https://www.estantevirtual.com.br/busca?q=tecnica+desafio+do+seculo+ellul",
+                hrefEn: "https://www.amazon.com/dp/0394703901"
+            },
+            {
+                titlePt: "A arte de lidar com as mulheres",
+                titleEn: "A arte de lidar com as mulheres",
+                author: "Arthur Schopenhauer",
+                year: 1851,
+                coverPt: "assets/books/women-pt.png",
+                coverEn: "assets/books/women-pt.png",
+                hrefPt: "https://www.amazon.com.br/dp/8546900698",
+                hrefEn: "https://www.amazon.com.br/dp/8546900698"
+            },
+            {
+                titlePt: "Aforismos para a sabedoria de vida",
+                titleEn: "The Wisdom of Life",
+                author: "Arthur Schopenhauer",
+                year: 1851,
+                coverPt: "assets/books/aph-pt.png",
+                coverEn: "assets/books/aph-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8546901198",
+                hrefEn: "https://www.amazon.com/dp/1573920339"
+            },
+            {
+                titlePt: "Toisinajattelijan päiväkirjasta",
+                titleEn: "Toisinajattelijan päiväkirjasta",
+                author: "Pentti Linkola",
+                year: 1979,
+                coverPt: "assets/books/linkola79.png",
+                coverEn: "assets/books/linkola79.png",
+                hrefPt: "https://www.antikvaari.fi/haku?q=Toisinajattelijan+p%C3%A4iv%C3%A4kirjasta",
+                hrefEn: "https://www.antikvaari.fi/haku?q=Toisinajattelijan+p%C3%A4iv%C3%A4kirjasta"
+            },
+            {
+                titlePt: "Unelmat paremmasta maailmasta",
+                titleEn: "Unelmat paremmasta maailmasta",
+                author: "Pentti Linkola",
+                year: 1971,
+                coverPt: "assets/books/linkola71.png",
+                coverEn: "assets/books/linkola71.png",
+                hrefPt: "https://intokustannus.fi/kirja/unelmat_paremmasta_maailmasta/",
+                hrefEn: "https://intokustannus.fi/kirja/unelmat_paremmasta_maailmasta/"
+            },
+            {
+                titlePt: "Nos Penhascos de Mármore",
+                titleEn: "On the Marble Cliffs",
+                author: "Ernst Jünger",
+                year: 1939,
+                coverPt: "assets/books/cliffs-pt.png",
+                coverEn: "assets/books/cliffs-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8575037242",
+                hrefEn: "https://www.amazon.com/dp/1681376253"
+            },
+            {
+                titlePt: "Tempestades de Aço",
+                titleEn: "Storm of Steel",
+                author: "Ernst Jünger",
+                year: 1920,
+                coverPt: "assets/books/storm-pt.png",
+                coverEn: "assets/books/storm-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/6554610626",
+                hrefEn: "https://www.amazon.com/dp/0141186917"
+            },
+            {
+                titlePt: "Os Inovadores",
+                titleEn: "The Innovators",
+                author: "Walter Isaacson",
+                year: 2014,
+                coverPt: "assets/books/innovators-pt.png",
+                coverEn: "assets/books/innovators-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8535925023",
+                hrefEn: "https://www.amazon.com/dp/147670869X"
+            },
+            {
+                titlePt: "Os Diários de Alfred Rosenberg",
+                titleEn: "The Political Diary of Alfred Rosenberg",
+                author: "Alfred Rosenberg",
+                year: 2015,
+                coverPt: "assets/books/rosenberg-pt.png",
+                coverEn: "assets/books/rosenberg-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/854220929X",
+                hrefEn: "https://www.amazon.com/dp/1442251670"
+            },
+            {
+                titlePt: "A Nova Era e a Revolução Cultural",
+                titleEn: "A Nova Era e a Revolução Cultural",
+                author: "Olavo de Carvalho",
+                year: 1994,
+                coverPt: "assets/books/novaera.png",
+                coverEn: "assets/books/novaera.png",
+                hrefPt: "https://www.amazon.com.br/dp/8567394260",
+                hrefEn: "https://www.amazon.com.br/dp/8567394260"
+            },
+            {
+                titlePt: "O Imbecil Coletivo",
+                titleEn: "O Imbecil Coletivo",
+                author: "Olavo de Carvalho",
+                year: 1996,
+                coverPt: "assets/books/imbecil.png",
+                coverEn: "assets/books/imbecil.png",
+                hrefPt: "https://www.amazon.com.br/dp/6587138918",
+                hrefEn: "https://www.amazon.com.br/dp/6587138918"
+            },
+            {
+                titlePt: "O Jardim das Aflições",
+                titleEn: "O Jardim das Aflições",
+                author: "Olavo de Carvalho",
+                year: 1995,
+                coverPt: "assets/books/jardim.png",
+                coverEn: "assets/books/jardim.png",
+                hrefPt: "https://www.amazon.com.br/dp/8567394511",
+                hrefEn: "https://www.amazon.com.br/dp/8567394511"
+            },
+            {
+                titlePt: "Anarquia e Cristianismo",
+                titleEn: "Anarchy and Christianity",
+                author: "Jacques Ellul",
+                year: 1988,
+                coverPt: "assets/books/anarquia-pt.png",
+                coverEn: "assets/books/anarquia-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8562877158",
+                hrefEn: "https://www.amazon.com/dp/0802804950"
+            },
+            {
+                titlePt: "O Homem e o Dinheiro",
+                titleEn: "Money and Power",
+                author: "Jacques Ellul",
+                year: 1954,
+                coverPt: "assets/books/dinheiro-pt.png",
+                coverEn: "assets/books/dinheiro-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8560387390",
+                hrefEn: "https://www.amazon.com/dp/1606083007"
+            },
+            {
+                titlePt: "Cristianismo Revolucionário",
+                titleEn: "Presence in the Modern World",
+                author: "Jacques Ellul",
+                year: 1948,
+                coverPt: "assets/books/presenca-pt.png",
+                coverEn: "assets/books/presenca-en.png",
+                hrefPt: "https://www.amazon.com.br/dp/8565158039",
+                hrefEn: "https://www.amazon.com/dp/1498291341"
+            }
+        ];
+
+        var LIBRARY_FIRST = [
+            "A Sociedade Industrial e Seu Futuro",
+            "A Técnica e o Desafio do Século"
+        ];
+
+        function libraryOrder() {
+            var pinned = [];
+            var rest = [];
+            BOOKS.forEach(function (book) {
+                var at = LIBRARY_FIRST.indexOf(book.titlePt);
+                if (at === -1) rest.push(book);
+                else pinned[at] = book;
+            });
+            var locale = lang === "pt" ? "pt" : "en";
+            rest.sort(function (a, b) {
+                var left = lang === "pt" ? a.titlePt : a.titleEn;
+                var right = lang === "pt" ? b.titlePt : b.titleEn;
+                return left.localeCompare(right, locale, { sensitivity: "base" });
+            });
+            return pinned.filter(Boolean).concat(rest);
+        }
+
+        function renderLibrary() {
+            var grid = document.getElementById("bookGrid");
+            if (!grid || !BOOKS.length) return;
+            grid.textContent = "";
+            var pt = lang === "pt";
+            libraryOrder().forEach(function (book) {
+                var a = document.createElement("a");
+                a.className = "book";
+                a.href = pt ? book.hrefPt : book.hrefEn;
+                a.target = "_blank";
+                a.rel = "noopener";
+                var cover = document.createElement("span");
+                cover.className = "book-cover";
+                var img = document.createElement("img");
+                img.src = pt ? book.coverPt : book.coverEn;
+                img.alt = pt ? book.titlePt : book.titleEn;
+                cover.appendChild(img);
+                var title = document.createElement("span");
+                title.className = "book-title";
+                title.textContent = pt ? book.titlePt : book.titleEn;
+                var author = document.createElement("span");
+                author.className = "book-meta";
+                author.textContent = pt ? (book.authorPt || book.author) : (book.authorEn || book.author);
+                var year = document.createElement("span");
+                year.className = "book-meta";
+                year.textContent = String(book.year);
+                a.appendChild(cover);
+                a.appendChild(title);
+                a.appendChild(author);
+                a.appendChild(year);
+                grid.appendChild(a);
+            });
         }
 
         document.getElementById("langBtn").addEventListener("click", function (e) {
@@ -861,6 +1590,7 @@
             applyLang();
         });
         applyLang();
+        loadPrices();
 
         var VOLUME = 0.18;
         var audio = document.getElementById("bgm");

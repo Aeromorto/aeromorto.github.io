@@ -1,0 +1,178 @@
+{
+  "updated": "2026-11-03T02:45:29Z",
+  "source": "Showcase cards use the Steam priceoverview lowest listing from 2026-11-02. inventory.usd and inventory.brl add every other marketable CS2 item at its Steam lowest listing (snapshot 2026-10-29). BRL for those other items uses the showcase BRL/USD rate. Thirteen unmarketable assets are excluded.",
+  "items": {
+    "gloves": {
+      "usd": 67800,
+      "brl": 368983
+    },
+    "m9": {
+      "usd": 86250,
+      "brl": 469381
+    },
+    "awp": {
+      "usd": 14450,
+      "brl": 78639
+    },
+    "ak": {
+      "usd": 816,
+      "brl": 4443
+    },
+    "deagle": {
+      "usd": 16405,
+      "brl": 89279
+    },
+    "sally": {
+      "usd": 7990,
+      "brl": 43487
+    },
+    "ava": {
+      "usd": 2157,
+      "brl": 11744
+    }
+  },
+  "inventory": {
+    "usd": 199330,
+    "brl": 1084798,
+    "units": 40,
+    "unique": 32,
+    "unpriced": [],
+    "fxBrlPerUsd": 5.442216,
+    "holdings": {
+      "AK-47 | Slate (Minimal Wear)": 1,
+      "AWP | Graphite (Factory New)": 1,
+      "Desert Eagle | Hypnotic (Factory New)": 1,
+      "Dreams & Nightmares Case": 4,
+      "Dual Berettas | Elite 1.6 (Factory New)": 1,
+      "FAMAS | Corp Defense (Factory New)": 1,
+      "Galil AR | Metallic Squeezer (Factory New)": 1,
+      "Getaway Sally | The Professionals": 1,
+      "Glock-18 | Wraiths (Field-Tested)": 1,
+      "M4A4 | Dark Operative (Minimal Wear)": 1,
+      "M4A4 | Magnesium (Minimal Wear)": 1,
+      "MAC-10 | Video Cam (Minimal Wear)": 1,
+      "MP7 | Armor Core (Minimal Wear)": 1,
+      "MP9 | Bee-Tron (Field-Tested)": 1,
+      "MP9 | Broken Record (Well-Worn)": 1,
+      "MP9 | Dart (Field-Tested)": 1,
+      "P250 | Sedimentary (Field-Tested)": 1,
+      "P90 | Blue Tac (Minimal Wear)": 1,
+      "P90 | Straight Dimes (Well-Worn)": 1,
+      "R8 Revolver | Dark Chamber (Minimal Wear)": 1,
+      "Revolution Case": 2,
+      "SSG 08 | Carbon Fiber (Factory New)": 1,
+      "Sawed-Off | Runoff (Field-Tested)": 1,
+      "Sealed Dead Hand Terminal": 1,
+      "Sealed Genesis Terminal": 5,
+      "Special Agent Ava | FBI": 1,
+      "StatTrak™ Music Kit | Neck Deep, Life's Not Out To Get You": 1,
+      "Tec-9 | Citric Acid (Factory New)": 1,
+      "USP-S | Ticket to Hell (Minimal Wear)": 1,
+      "XM1014 | Gum Wall Camo (Minimal Wear)": 1,
+      "★ M9 Bayonet": 1,
+      "★ Sport Gloves | Nocts (Field-Tested)": 1
+    },
+    "listings": {
+      "Dreams & Nightmares Case": {
+        "usd": 111,
+        "brl": 604
+      },
+      "Dual Berettas | Elite 1.6 (Factory New)": {
+        "usd": 98,
+        "brl": 533
+      },
+      "FAMAS | Corp Defense (Factory New)": {
+        "usd": 121,
+        "brl": 659
+      },
+      "Galil AR | Metallic Squeezer (Factory New)": {
+        "usd": 81,
+        "brl": 441
+      },
+      "Glock-18 | Wraiths (Field-Tested)": {
+        "usd": 60,
+        "brl": 327
+      },
+      "M4A4 | Dark Operative (Minimal Wear)": {
+        "usd": 153,
+        "brl": 833
+      },
+      "M4A4 | Magnesium (Minimal Wear)": {
+        "usd": 142,
+        "brl": 773
+      },
+      "MAC-10 | Video Cam (Minimal Wear)": {
+        "usd": 15,
+        "brl": 82
+      },
+      "MP7 | Armor Core (Minimal Wear)": {
+        "usd": 47,
+        "brl": 256
+      },
+      "MP9 | Bee-Tron (Field-Tested)": {
+        "usd": 3,
+        "brl": 16
+      },
+      "MP9 | Broken Record (Well-Worn)": {
+        "usd": 8,
+        "brl": 44
+      },
+      "MP9 | Dart (Field-Tested)": {
+        "usd": 77,
+        "brl": 419
+      },
+      "P250 | Sedimentary (Field-Tested)": {
+        "usd": 4,
+        "brl": 22
+      },
+      "P90 | Blue Tac (Minimal Wear)": {
+        "usd": 3,
+        "brl": 16
+      },
+      "P90 | Straight Dimes (Well-Worn)": {
+        "usd": 5,
+        "brl": 27
+      },
+      "R8 Revolver | Dark Chamber (Minimal Wear)": {
+        "usd": 6,
+        "brl": 33
+      },
+      "Revolution Case": {
+        "usd": 19,
+        "brl": 103
+      },
+      "SSG 08 | Carbon Fiber (Factory New)": {
+        "usd": 302,
+        "brl": 1644
+      },
+      "Sawed-Off | Runoff (Field-Tested)": {
+        "usd": 3,
+        "brl": 16
+      },
+      "Sealed Dead Hand Terminal": {
+        "usd": 30,
+        "brl": 163
+      },
+      "Sealed Genesis Terminal": {
+        "usd": 7,
+        "brl": 38
+      },
+      "StatTrak™ Music Kit | Neck Deep, Life's Not Out To Get You": {
+        "usd": 1671,
+        "brl": 9094
+      },
+      "Tec-9 | Citric Acid (Factory New)": {
+        "usd": 15,
+        "brl": 82
+      },
+      "USP-S | Ticket to Hell (Minimal Wear)": {
+        "usd": 95,
+        "brl": 517
+      },
+      "XM1014 | Gum Wall Camo (Minimal Wear)": {
+        "usd": 6,
+        "brl": 33
+      }
+    }
+  }
+}
