@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-03T02:45:29Z",
-  "source": "Showcase cards use the Steam priceoverview lowest listing from 2026-11-02. inventory.usd and inventory.brl add every other marketable CS2 item at its Steam lowest listing (snapshot 2026-10-29). BRL for those other items uses the showcase BRL/USD rate. Thirteen unmarketable assets are excluded.",
+  "updated": "2026-11-03T19:28:40Z",
+  "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
   "items": {
     "gloves": {
-      "usd": 67800,
-      "brl": 368983
+      "usd": 62000,
+      "brl": 337416
     },
     "m9": {
       "usd": 86250,
       "brl": 469381
     },
     "awp": {
-      "usd": 14450,
-      "brl": 78639
+      "usd": 14197,
+      "brl": 77261
     },
     "ak": {
-      "usd": 816,
-      "brl": 4443
+      "usd": 753,
+      "brl": 4103
     },
     "deagle": {
       "usd": 16405,
@@ -32,12 +32,12 @@
     }
   },
   "inventory": {
-    "usd": 199330,
-    "brl": 1084798,
+    "usd": 193214,
+    "brl": 1051513,
     "units": 40,
     "unique": 32,
+    "fxBrlPerUsd": 5.442214,
     "unpriced": [],
-    "fxBrlPerUsd": 5.442216,
     "holdings": {
       "AK-47 | Slate (Minimal Wear)": 1,
       "AWP | Graphite (Factory New)": 1,
