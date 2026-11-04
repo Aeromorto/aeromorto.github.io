@@ -1,16 +1,16 @@
 {
-  "updated": "2026-11-04T16:47:15Z",
-  "source": "Showcase card prices were set by hand on 2026-11-04. BRL is the source. USD, EUR and RUB use the open.er-api.com USD rates from 2026-11-04 (BRL 5.48609, EUR 0.893426, RUB 81.415956). inventory adds the rest of the marketable CS2 items on top of the previous R$ 10.847,98 total. The scheduled Steam updater only knows USD and BRL and will replace these numbers on its next run.",
+  "updated": "2026-11-04T19:42:43Z",
+  "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
   "items": {
     "gloves": {
-      "brl": 457800,
-      "usd": 83447,
+      "brl": 385118,
+      "usd": 70000,
       "eur": 74554,
       "rub": 6793951
     },
     "m9": {
       "brl": 627800,
-      "usd": 114435,
+      "usd": 88000,
       "eur": 102239,
       "rub": 9316824
     },
@@ -46,15 +46,11 @@
     }
   },
   "inventory": {
-    "usd": 267036,
-    "eur": 238577,
-    "rub": 21741013,
-    "brl": 1464985,
+    "usd": 227182,
+    "brl": 1394714,
     "units": 40,
     "unique": 32,
-    "fxBrlPerUsd": 5.48609,
-    "fxEurPerUsd": 0.893426,
-    "fxRubPerUsd": 81.415956,
+    "fxBrlPerUsd": 6.139196,
     "unpriced": [],
     "holdings": {
       "AK-47 | Slate (Minimal Wear)": 1,
@@ -93,103 +89,103 @@
     "listings": {
       "Dreams & Nightmares Case": {
         "usd": 111,
-        "brl": 604
+        "brl": 681
       },
       "Dual Berettas | Elite 1.6 (Factory New)": {
         "usd": 98,
-        "brl": 533
+        "brl": 602
       },
       "FAMAS | Corp Defense (Factory New)": {
         "usd": 121,
-        "brl": 659
+        "brl": 743
       },
       "Galil AR | Metallic Squeezer (Factory New)": {
         "usd": 81,
-        "brl": 441
+        "brl": 497
       },
       "Glock-18 | Wraiths (Field-Tested)": {
         "usd": 60,
-        "brl": 327
+        "brl": 368
       },
       "M4A4 | Dark Operative (Minimal Wear)": {
         "usd": 153,
-        "brl": 833
+        "brl": 939
       },
       "M4A4 | Magnesium (Minimal Wear)": {
         "usd": 142,
-        "brl": 773
+        "brl": 872
       },
       "MAC-10 | Video Cam (Minimal Wear)": {
         "usd": 15,
-        "brl": 82
+        "brl": 92
       },
       "MP7 | Armor Core (Minimal Wear)": {
         "usd": 47,
-        "brl": 256
+        "brl": 289
       },
       "MP9 | Bee-Tron (Field-Tested)": {
         "usd": 3,
-        "brl": 16
+        "brl": 18
       },
       "MP9 | Broken Record (Well-Worn)": {
         "usd": 8,
-        "brl": 44
+        "brl": 49
       },
       "MP9 | Dart (Field-Tested)": {
         "usd": 77,
-        "brl": 419
+        "brl": 473
       },
       "P250 | Sedimentary (Field-Tested)": {
         "usd": 4,
-        "brl": 22
+        "brl": 25
       },
       "P90 | Blue Tac (Minimal Wear)": {
         "usd": 3,
-        "brl": 16
+        "brl": 18
       },
       "P90 | Straight Dimes (Well-Worn)": {
         "usd": 5,
-        "brl": 27
+        "brl": 31
       },
       "R8 Revolver | Dark Chamber (Minimal Wear)": {
         "usd": 6,
-        "brl": 33
+        "brl": 37
       },
       "Revolution Case": {
         "usd": 19,
-        "brl": 103
+        "brl": 117
       },
       "SSG 08 | Carbon Fiber (Factory New)": {
         "usd": 302,
-        "brl": 1644
+        "brl": 1854
       },
       "Sawed-Off | Runoff (Field-Tested)": {
         "usd": 3,
-        "brl": 16
+        "brl": 18
       },
       "Sealed Dead Hand Terminal": {
         "usd": 30,
-        "brl": 163
+        "brl": 184
       },
       "Sealed Genesis Terminal": {
         "usd": 7,
-        "brl": 38
+        "brl": 43
       },
       "StatTrak™ Music Kit | Neck Deep, Life's Not Out To Get You": {
         "usd": 1671,
-        "brl": 9094
+        "brl": 10259
       },
       "Tec-9 | Citric Acid (Factory New)": {
         "usd": 15,
-        "brl": 82
+        "brl": 92
       },
       "USP-S | Ticket to Hell (Minimal Wear)": {
         "usd": 95,
-        "brl": 517
+        "brl": 583
       },
       "XM1014 | Gum Wall Camo (Minimal Wear)": {
         "usd": 6,
-        "brl": 33
+        "brl": 37
       }
     }
   }
