@@ -27,7 +27,7 @@
         }
         body {
             min-height: 100vh;
-            padding: 52.8px 22px 88px;
+            padding: 200px 22px 88px;
         }
         body::before {
             content: "";
@@ -181,7 +181,7 @@
             row-gap: 8.8px;
             align-content: start;
         }
-        .group-room { grid-column: 1 / -1; }
+        .group-room, .group-gadgets { grid-column: 1 / -1; }
         .group h3 {
             grid-column: 1 / -1;
             font-size: 11px;
@@ -235,6 +235,35 @@
         }
         .gear-item:hover img,
         .gear-item:focus-visible img { transform: scale(1.08); }
+        .gear-shot {
+            position: relative;
+            display: block;
+            height: 151.2px;
+            margin-bottom: 6.6px;
+            border-radius: 11px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .gear-shot img {
+            margin-bottom: 0;
+        }
+        .gear-shot .shot-still {
+            object-fit: contain;
+        }
+        .gear-pad .shot-still {
+            object-fit: cover;
+        }
+        .gear-shot .shot-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+        .gear-item:hover .shot-hover,
+        .gear-item:focus-visible .shot-hover { opacity: 1; }
         .gear-meta {
             min-width: 0;
         }
@@ -618,42 +647,51 @@
             flex-shrink: 0;
         }
         #playBtn:hover { color: #fff; background: #222; }
-        .lang {
+        .langs {
             position: fixed;
             top: 15.4px;
             right: 15.4px;
             z-index: 50;
             display: flex;
             align-items: center;
-            gap: 8.8px;
+            gap: 4px;
             background: rgba(12, 12, 12, 0.9);
             border: 1px solid #3a3a3a;
             border-radius: 999px;
-            padding: 7.7px 13.2px;
-            color: #ddd;
+            padding: 6px 8px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+        }
+        .langs button {
+            border: 0;
+            background: transparent;
+            padding: 2px;
+            margin: 0;
+            border-radius: 3px;
             cursor: pointer;
-            font-size: 13.2px;
-            font-weight: 650;
-            letter-spacing: 0.06em;
+            line-height: 0;
+            opacity: 0.4;
             -webkit-tap-highlight-color: transparent;
         }
-        .lang:hover { border-color: #888; }
-        .lang .code { color: #666; }
-        .lang .code.on { color: #fff; }
-        .lang i {
-            font-size: 12.1px;
-            color: #555;
+        .langs button:hover { opacity: 0.82; }
+        .langs button.on {
+            opacity: 1;
+            box-shadow: 0 0 0 1px #fff;
+        }
+        .langs svg {
+            display: block;
+            width: 22px;
+            height: 15.7px;
+            border-radius: 2px;
         }
         @media (max-width: 616px) {
-            body { padding: 61.6px 15.4px 88px; }
+            body { padding: 160px 15.4px 88px; }
             h1 { font-size: 26.4px; }
             .gate-inner h1 { font-size: 28.6px; }
             .socials { gap: 7.7px; }
             .socials a { width: 37.4px; height: 37.4px; }
             .gear-item { padding: 13.2px 11px; gap: 2.2px; }
-            .gear-item img { width: 100%; height: 118.8px; }
+            .gear-item img, .gear-shot { width: 100%; height: 118.8px; }
             .gear-name { font-size: 12.7px; }
             .gear-cat { font-size: 9.9px; }
             .inv-img, .inv-img img { height: 88px; max-height: 88px; }
@@ -661,7 +699,7 @@
             .inv-meta, .book-meta { font-size: 9.9px; }
             .book-cover, .book-cover img { height: 132px; max-height: 132px; }
             .board { grid-template-columns: 1fr; gap: 18px; }
-            .group, .group-room { display: block; grid-column: auto; }
+            .group, .group-room, .group-gadgets { display: block; grid-column: auto; }
             .group h3 { margin: 0 0 8.8px; }
             .gear {
                 display: grid;
@@ -676,7 +714,8 @@
             .player.open,
             .player:focus-within { width: min(330px, calc(100vw - 26.4px)); }
             .player-title { font-size: 13.2px; }
-            .lang { top: 11px; right: 11px; padding: 6.6px 11px; }
+            .langs { top: 11px; right: 11px; gap: 2px; padding: 5px 6px; }
+            .langs svg { width: 18px; height: 12.8px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .wrap, .player.show, #gate, .gate-inner {
@@ -689,7 +728,7 @@
                 transform: none;
             }
             .player.show { opacity: 1; transform: none; }
-            .socials a i, .socials a svg, .location img,
+            .socials a i, .socials a svg, .location img, .langs svg,
             .gear-item img, .inv-img img, .book-cover img, .steam-mark {
                 transition: none !important;
                 transform: none !important;
@@ -709,11 +748,15 @@
     </style>
 </head>
 <body>
-    <button class="lang" id="langBtn" type="button" aria-label="Idioma">
-        <span class="code on" id="langFrom">PT</span>
-        <i class="fa-solid fa-right-left"></i>
-        <span class="code" id="langTo">EN</span>
-    </button>
+    <nav class="langs" id="langNav" data-i18n-aria="lang" aria-label="Idioma">
+        <button type="button" data-lang="en" aria-label="English" aria-pressed="false"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0 L60 30 M60 0 L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0 V30 M0 15 H60" stroke="#fff" stroke-width="10"/><path d="M30 0 V30 M0 15 H60" stroke="#C8102E" stroke-width="6"/></svg></button>
+        <button type="button" data-lang="pt" aria-label="Português" aria-pressed="true"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009c3b"/><polygon points="10,1.15 18.55,7 10,12.85 1.45,7" fill="#ffdf00"/><circle cx="10" cy="7" r="2.55" fill="#002776"/><path d="M7.55 7.85c1.15-1.35 3.15-1.7 4.85-.7" fill="none" stroke="#fff" stroke-width="0.55"/></svg></button>
+        <button type="button" data-lang="es" aria-label="Español" aria-pressed="false"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#c60b1e"/><rect y="3.5" width="20" height="7" fill="#ffc400"/></svg></button>
+        <button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#000"/><rect y="4.67" width="20" height="4.66" fill="#dd0000"/><rect y="9.33" width="20" height="4.67" fill="#ffce00"/></svg></button>
+        <button type="button" data-lang="ru" aria-label="Русский" aria-pressed="false"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><rect y="4.67" width="20" height="4.66" fill="#0039a6"/><rect y="9.33" width="20" height="4.67" fill="#d52b1e"/></svg></button>
+        <button type="button" data-lang="da" aria-label="Dansk" aria-pressed="false"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#c8102e"/><rect x="6" width="3" height="14" fill="#fff"/><rect y="5.5" width="20" height="3" fill="#fff"/></svg></button>
+        <button type="button" data-lang="fi" aria-label="Suomi" aria-pressed="false"><svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><rect x="5.5" width="3.2" height="14" fill="#003580"/><rect y="5.4" width="20" height="3.2" fill="#003580"/></svg></button>
+    </nav>
     <div id="gate">
         <div class="gate-inner">
             <h1>@Aeromorto</h1>
@@ -745,16 +788,7 @@
     <div class="wrap">
         <header class="profile">
             <h1>@Aeromorto</h1>
-            <p class="subtitle" data-i18n="subtitle">Social Media &amp; Gaming</p>
-            <p class="location">
-                <img src="assets/dk.svg" alt="">
-                <span data-i18n="denmark">Dinamarca</span>
-                <span class="sep">|</span>
-                <span class="views" data-i18n-title="views" title="Visitantes">
-                    <svg class="view-mark" viewBox="0 0 24 14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M1.2 7C3.6 3.1 7.4 1.2 12 1.2S20.4 3.1 22.8 7C20.4 10.9 16.6 12.8 12 12.8S3.6 10.9 1.2 7z"/><circle cx="12" cy="7" r="2.15" fill="currentColor"/></svg>
-                    <span id="viewCount">4.322</span>
-                </span>
-            </p>
+            <p class="subtitle" data-i18n="subtitle">Social media, setup &amp; library</p>
             <nav class="socials" data-i18n-aria="socials" aria-label="Redes">
                 <a href="https://x.com/aeromorto" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/aeromorto/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -786,49 +820,70 @@
             <h3 data-i18n="desktop">Desktop</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html" target="_blank" rel="noopener">
-                    <img src="assets/products/cpu-9900x3d.jpg" alt="AMD Ryzen 9 9900X3D">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/cpu-9900x3d.jpg" alt="AMD Ryzen 9 9900X3D">
+                        <img class="shot-hover" src="assets/products/cpu-9900x3d-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="cpu">Processador</span>
                         <span class="gear-name">AMD Ryzen 9 9900X3D</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.powercolor.com/product-detail211.htm" target="_blank" rel="noopener">
-                    <img src="assets/products/gpu-9070xt.jpg" alt="PowerColor Hellhound RX 9070 XT">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/gpu-9070xt.jpg" alt="PowerColor Hellhound RX 9070 XT">
+                        <img class="shot-hover" src="assets/products/gpu-9070xt-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="gpu">Placa de vídeo</span>
                         <span class="gear-name">PowerColor Hellhound RX 9070 XT 16GB</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.corsair.com/us/en/p/memory/cmk32gx5m2x7200c34/vengeance-32gb-2x16gb-ddr5-dram-7200mhz-c34-memory-kit-black-cmk32gx5m2x7200c34" target="_blank" rel="noopener">
-                    <img src="assets/products/ram.jpg" alt="Corsair Vengeance DDR5">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/ram.jpg" alt="Corsair Vengeance DDR5">
+                        <img class="shot-hover" src="assets/products/ram-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="ram">Memória RAM</span>
                         <span class="gear-name">Corsair Vengeance 32GB DDR5</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.asus.com/us/motherboards-components/motherboards/proart/proart-x670e-creator-wifi/" target="_blank" rel="noopener">
-                    <img src="assets/products/proart-x670e.jpg" alt="ASUS ProArt X670E-Creator WiFi">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/proart-x670e.jpg" alt="ASUS ProArt X670E-Creator WiFi">
+                        <img class="shot-hover" src="assets/products/proart-x670e-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mb">Placa-mãe</span>
                         <span class="gear-name">ASUS ProArt X670E-Creator WiFi</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://rog.asus.com/cooling/cpu-liquid-coolers/rog-ryujin/rog-ryujin-iii-360-argb/" target="_blank" rel="noopener">
-                    <img src="assets/products/ryujin.jpg" alt="ASUS ROG Ryujin III 360 ARGB">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/ryujin.jpg" alt="ASUS ROG Ryujin III 360 ARGB">
+                        <img class="shot-hover" src="assets/products/ryujin-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="cooler">Water cooler</span>
                         <span class="gear-name">ASUS ROG Ryujin III 360 ARGB</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.sandisk.com/products/ssd/internal-ssd/wd-black-sn7100-nvme-internal-ssd?sku=WDS400T4X0E-00CJA0" target="_blank" rel="noopener">
-                    <img src="assets/products/ssd-sn7100.jpg" alt="WD Black SN7100 4TB">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/ssd-sn7100.jpg" alt="WD Black SN7100 4TB">
+                        <img class="shot-hover" src="assets/products/ssd-sn7100-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="ssd">Armazenamento</span>
                         <span class="gear-name">WD Black SN7100 4TB</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.xtia.design/products/new-product-xtia-xporot-z-matx-open-frame?variant=45078307274952" target="_blank" rel="noopener">
-                    <img src="assets/products/case-xprotoz.png" alt="XTIA X-Proto-Z">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/case-xprotoz.png" alt="XTIA X-Proto-Z">
+                        <img class="shot-hover" src="assets/products/case-xprotoz-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="case">Gabinete (Open Build)</span>
                         <span class="gear-name">XTIA X-Proto-Z</span>
@@ -841,49 +896,70 @@
             <h3 data-i18n="peripherals">Periféricos</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.dell.com/en-us/shop/alienware-25-gaming-monitor-aw2523hf/apd/210-bfed/monitors-monitor-accessories" target="_blank" rel="noopener">
-                    <img src="assets/products/aw2523hf.jpg" alt="Alienware 25 360Hz">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/aw2523hf.jpg" alt="Alienware 25 360Hz">
+                        <img class="shot-hover" src="assets/products/aw2523hf-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="monitor">Monitor</span>
                         <span class="gear-name">Alienware 25" 360Hz</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://steelseries.com/gaming-keyboards/apex-pro-gen-3?connectivityType=wired&amp;color=black&amp;keyboardSize=tkl&amp;keyboardLanguage=english" target="_blank" rel="noopener">
-                    <img src="assets/products/keyboard.jpg" alt="SteelSeries Apex Pro TKL Gen 3">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/keyboard.jpg" alt="SteelSeries Apex Pro TKL Gen 3">
+                        <img class="shot-hover" src="assets/products/keyboard-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="keyboard">Teclado</span>
                         <span class="gear-name">SteelSeries Apex Pro TKL Gen 3</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.razer.com/gaming-mice/razer-deathadder-v4-pro" target="_blank" rel="noopener">
-                    <img src="assets/products/mouse.jpg" alt="Razer DeathAdder V4 Pro">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/mouse.jpg" alt="Razer DeathAdder V4 Pro">
+                        <img class="shot-hover" src="assets/products/mouse-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mouse">Mouse</span>
                         <span class="gear-name">Razer DeathAdder V4 Pro</span>
                     </div>
                 </a>
-                <a class="gear-item" href="https://wallhack.com/products/sp-005-black" target="_blank" rel="noopener">
-                    <img src="assets/products/sp005.jpg" alt="Wallhack SP-005">
+                <a class="gear-item gear-pad" href="https://wallhack.com/products/sp-005-black" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/sp005.jpg" alt="Wallhack SP-005">
+                        <img class="shot-hover" src="assets/products/sp005-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mousepad">Mousepad de vidro</span>
                         <span class="gear-name">Wallhack SP-005</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://wallhack.com/products/pro-sleeve" target="_blank" rel="noopener">
-                    <img src="assets/products/sleeve-pro.jpg" alt="Wallhack Pro Sleeve">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/sleeve-pro.jpg" alt="Wallhack Pro Sleeve">
+                        <img class="shot-hover" src="assets/products/sleeve-pro-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="sleeve">Manguito</span>
                         <span class="gear-name">Wallhack Pro Sleeve</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://hyperx.com/products/hyperx-quadcast-2-s-usb-microphone" target="_blank" rel="noopener">
-                    <img src="assets/products/quadcast2s.jpg" alt="HyperX QuadCast 2 S">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/quadcast2s.jpg" alt="HyperX QuadCast 2 S">
+                        <img class="shot-hover" src="assets/products/quadcast2s-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="mic">Microfone</span>
                         <span class="gear-name">HyperX QuadCast 2 S</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.razer.com/gaming-headsets/razer-blackshark-v3-pro" target="_blank" rel="noopener">
-                    <img src="assets/products/blackshark-v3-pro.jpg" alt="Razer BlackShark V3 Pro">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/blackshark-v3-pro.jpg" alt="Razer BlackShark V3 Pro">
+                        <img class="shot-hover" src="assets/products/blackshark-v3-pro-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="earbuds">Fones</span>
                         <span class="gear-name">Razer BlackShark V3 Pro</span>
@@ -892,32 +968,110 @@
             </div>
             </div>
 
+            <div class="group group-gadgets">
+            <h3 data-i18n="gadgets">Gadgets</h3>
+            <div class="gear">
+                <a class="gear-item" href="https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-black-unlocked" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/iphone-18-pro-max.jpg" alt="iPhone 18 Pro Max 256GB">
+                        <img class="shot-hover" src="assets/products/iphone-18-pro-max-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="phone">Celular</span>
+                        <span class="gear-name">iPhone 18 Pro Max 256GB</span>
+                    </div>
+                </a>
+                <a class="gear-item" href="https://www.amazon.com/dp/B0F4ZT9YKQ" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/macbook-air-m4.jpg" alt="MacBook Air M4 16/256">
+                        <img class="shot-hover" src="assets/products/macbook-air-m4-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="laptop">Notebook</span>
+                        <span class="gear-name">MacBook Air M4 16/256</span>
+                    </div>
+                </a>
+                <a class="gear-item" href="https://www.apple.com/shop/buy-airpods/airpods-pro-3" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/airpods-pro-3.jpg" alt="AirPods Pro 3">
+                        <img class="shot-hover" src="assets/products/airpods-pro-3-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="buds">Fones</span>
+                        <span class="gear-name">AirPods Pro 3</span>
+                    </div>
+                </a>
+                <a class="gear-item" href="https://www.amazon.com/dp/B0FQFPB851" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/watch-series-11.jpg" alt="Apple Watch Series 11">
+                        <img class="shot-hover" src="assets/products/watch-series-11-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="watch">Smartwatch</span>
+                        <span class="gear-name">Apple Watch Series 11</span>
+                    </div>
+                </a>
+                <a class="gear-item" href="https://www.amazon.com/dp/B07SD95QCP" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/ipod-touch-7.jpg" alt="iPod touch 7th Gen">
+                        <img class="shot-hover" src="assets/products/ipod-touch-7-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="ipod">iPod</span>
+                        <span class="gear-name">iPod touch 7th Gen</span>
+                    </div>
+                </a>
+                <a class="gear-item" href="https://www.apple.com/shop/product/myqy3am/a/earpods-usb-c" target="_blank" rel="noopener">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/earpods-usb-c.jpg" alt="EarPods USB-C">
+                        <img class="shot-hover" src="assets/products/earpods-usb-c-hover.jpg" alt="">
+                    </span>
+                    <div class="gear-meta">
+                        <span class="gear-cat" data-i18n="earphones">Fones</span>
+                        <span class="gear-name">EarPods USB-C</span>
+                    </div>
+                </a>
+            </div>
+            </div>
+
             <div class="group group-room">
-            <h3 data-i18n="consoles">Room</h3>
+            <h3 data-i18n="consoles">Gaming</h3>
             <div class="gear">
                 <a class="gear-item" href="https://www.xbox.com/en-US/consoles/xbox-series-x" target="_blank" rel="noopener">
-                    <img src="assets/products/xbox-x-kabum.jpg" alt="Xbox Series X">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/xbox-x-kabum.jpg" alt="Xbox Series X">
+                        <img class="shot-hover" src="assets/products/xbox-x-kabum-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="console">Console</span>
                         <span class="gear-name">Xbox Series X</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.xbox.com/en-US/accessories/controllers/elite-wireless-controller-series-2" target="_blank" rel="noopener">
-                    <img src="assets/products/elite-series-2.jpg" alt="Xbox Elite Series 2">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/elite-series-2.jpg" alt="Xbox Elite Series 2">
+                        <img class="shot-hover" src="assets/products/elite-series-2-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="controller">Controle</span>
                         <span class="gear-name">Xbox Elite Series 2</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://www.samsung.com/us/tvs/oled-tv/65-class-oled-s90d-sku-qn65s90dafxza/" target="_blank" rel="noopener">
-                    <img src="assets/products/samsung65.jpg" alt="Samsung 65&quot; OLED 4K | 120hz">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/samsung65.jpg" alt="Samsung 65&quot; OLED 4K | 120hz">
+                        <img class="shot-hover" src="assets/products/samsung65-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="tv">TV</span>
                         <span class="gear-name">Samsung 65&quot; OLED 4K | 120hz</span>
                     </div>
                 </a>
                 <a class="gear-item" href="https://global.harmankardon.com/bluetooth-speakers/AURA-STUDIO-5.html" target="_blank" rel="noopener">
-                    <img src="assets/products/aura5.jpg" alt="Harman/Kardon Aura Studio 5">
+                    <span class="gear-shot">
+                        <img class="shot-still" src="assets/products/aura5.jpg" alt="Harman/Kardon Aura Studio 5">
+                        <img class="shot-hover" src="assets/products/aura5-hover.jpg" alt="">
+                    </span>
                     <div class="gear-meta">
                         <span class="gear-cat" data-i18n="speaker">Caixa de som</span>
                         <span class="gear-name">Harman/Kardon Aura Studio 5</span>
@@ -951,12 +1105,13 @@
         var I18N = {
             pt: {
                 enter: "clique para entrar",
-                subtitle: "Mídia Sociais e Plataforma de Jogos",
+                subtitle: "Redes Sociais, setup & biblioteca",
                 denmark: "Dinamarca",
                 socials: "Redes",
                 desktop: "Desktop",
                 peripherals: "Periféricos",
-                consoles: "Quarto",
+                consoles: "Gaming",
+                gadgets: "Gadgets",
                 setup: "Setup",
                 inventory: "Inventário",
                 library: "Biblioteca",
@@ -981,22 +1136,35 @@
                 console: "Console",
                 controller: "Controle",
                 tv: "TV",
+                phone: "Celular",
+                laptop: "Notebook",
+                buds: "Fones",
+                watch: "Smartwatch",
+                ipod: "iPod",
+                earphones: "Fones",
                 contact: "Contato:",
                 views: "Visitantes",
                 online: "Online",
                 prev: "Reiniciar",
                 play: "Play",
                 next: "Loop",
-                lang: "Traduzir para inglês"
+                lang: "Idioma",
+                authorAnon: "Anônimo",
+                authorVarious: "Vários tradutores",
+                wearFT: "Testada em Campo",
+                wearNP: "Não Pintada",
+                wearFN: "Nova de Fábrica",
+                wearMW: "Pouco Usada"
             },
             en: {
                 enter: "click to enter",
-                subtitle: "Social Media & Gaming",
+                subtitle: "Social media, setup & library",
                 denmark: "Denmark",
                 socials: "Links",
                 desktop: "Desktop",
                 peripherals: "Peripherals",
-                consoles: "Room",
+                consoles: "Gaming",
+                gadgets: "Gadgets",
                 setup: "Setup",
                 inventory: "Inventory",
                 library: "Library",
@@ -1021,23 +1189,310 @@
                 console: "Console",
                 controller: "Controller",
                 tv: "TV",
+                phone: "Phone",
+                laptop: "Laptop",
+                buds: "Earbuds",
+                watch: "Smartwatch",
+                ipod: "iPod",
+                earphones: "Earphones",
                 contact: "Contact:",
                 views: "Visitors",
                 online: "Online",
                 prev: "Restart",
                 play: "Play",
                 next: "Loop",
-                lang: "Translate to Portuguese"
+                lang: "Language",
+                authorAnon: "Anonymous",
+                authorVarious: "Various translators",
+                wearFT: "Field-Tested",
+                wearNP: "Not Painted",
+                wearFN: "Factory New",
+                wearMW: "Minimal Wear"
+            },
+            es: {
+                enter: "haz clic para entrar",
+                subtitle: "Redes sociales, setup & biblioteca",
+                denmark: "Dinamarca",
+                socials: "Redes",
+                desktop: "PC",
+                peripherals: "Periféricos",
+                consoles: "Gaming",
+                gadgets: "Gadgets",
+                setup: "Setup",
+                inventory: "Inventario",
+                library: "Biblioteca",
+                libraryNote: "(obras leídas hasta ahora)",
+                openInv: "Ir al inventario",
+                value: "Valor",
+                cpu: "CPU",
+                gpu: "GPU",
+                ram: "RAM",
+                mb: "Placa base",
+                cooler: "Refrigeración líquida",
+                ssd: "SSD",
+                case: "Caja (Open Build)",
+                monitor: "Monitor",
+                keyboard: "Teclado",
+                mouse: "Ratón",
+                mousepad: "Alfombrilla de cristal",
+                sleeve: "Manguito",
+                earbuds: "Cascos",
+                mic: "Micrófono",
+                speaker: "Altavoz",
+                console: "Consola",
+                controller: "Mando",
+                tv: "TV",
+                phone: "Teléfono",
+                laptop: "Portátil",
+                buds: "In-ear",
+                watch: "Smartwatch",
+                ipod: "iPod",
+                earphones: "Auriculares",
+                contact: "Contacto:",
+                views: "Visitantes",
+                online: "En línea",
+                prev: "Reiniciar",
+                play: "Play",
+                next: "Bucle",
+                lang: "Idioma",
+                authorAnon: "Anónimo",
+                authorVarious: "Varios traductores",
+                wearFT: "Algo desgastado",
+                wearNP: "Sin pintar",
+                wearFN: "De fábrica",
+                wearMW: "Casi nuevo"
+            },
+            de: {
+                enter: "klicken zum Eintreten",
+                subtitle: "Soziale Medien, Setup & Bibliothek",
+                denmark: "Dänemark",
+                socials: "Links",
+                desktop: "Desktop",
+                peripherals: "Peripherie",
+                consoles: "Gaming",
+                gadgets: "Gadgets",
+                setup: "Setup",
+                inventory: "Inventar",
+                library: "Bibliothek",
+                libraryNote: "(bisher gelesene Werke)",
+                openInv: "Zum Inventar",
+                value: "Wert",
+                cpu: "CPU",
+                gpu: "GPU",
+                ram: "RAM",
+                mb: "Mainboard",
+                cooler: "Wasserkühlung",
+                ssd: "SSD",
+                case: "Gehäuse (Open Build)",
+                monitor: "Monitor",
+                keyboard: "Tastatur",
+                mouse: "Maus",
+                mousepad: "Glaspad",
+                sleeve: "Ärmel",
+                earbuds: "Headset",
+                mic: "Mikrofon",
+                speaker: "Lautsprecher",
+                console: "Konsole",
+                controller: "Controller",
+                tv: "TV",
+                phone: "Telefon",
+                laptop: "Laptop",
+                buds: "Ohrhörer",
+                watch: "Smartwatch",
+                ipod: "iPod",
+                earphones: "Kopfhörer",
+                contact: "Kontakt:",
+                views: "Besucher",
+                online: "Online",
+                prev: "Neu starten",
+                play: "Play",
+                next: "Loop",
+                lang: "Sprache",
+                authorAnon: "Anonym",
+                authorVarious: "Verschiedene Übersetzer",
+                wearFT: "Einsatzerprobt",
+                wearNP: "Nicht bemalt",
+                wearFN: "Fabrikneu",
+                wearMW: "Minimale Gebrauchsspuren"
+            },
+            ru: {
+                enter: "нажмите, чтобы войти",
+                subtitle: "Соцсети, сетап & библиотека",
+                denmark: "Дания",
+                socials: "Ссылки",
+                desktop: "Компьютер",
+                peripherals: "Периферия",
+                consoles: "Гейминг",
+                gadgets: "Гаджеты",
+                setup: "Сетап",
+                inventory: "Инвентарь",
+                library: "Библиотека",
+                libraryNote: "(прочитано на данный момент)",
+                openInv: "Перейти в инвентарь",
+                value: "Стоимость",
+                cpu: "Процессор",
+                gpu: "Видеокарта",
+                ram: "RAM",
+                mb: "Матплата",
+                cooler: "СЖО",
+                ssd: "SSD",
+                case: "Корпус (Open Build)",
+                monitor: "Монитор",
+                keyboard: "Клавиатура",
+                mouse: "Мышь",
+                mousepad: "Стеклянный коврик",
+                sleeve: "Рукав",
+                earbuds: "Гарнитура",
+                mic: "Микрофон",
+                speaker: "Колонка",
+                console: "Консоль",
+                controller: "Геймпад",
+                tv: "ТВ",
+                phone: "Телефон",
+                laptop: "Ноутбук",
+                buds: "Наушники",
+                watch: "Смарт-часы",
+                ipod: "iPod",
+                earphones: "Вкладыши",
+                contact: "Контакт:",
+                views: "Посетители",
+                online: "В сети",
+                prev: "Сначала",
+                play: "Воспроизвести",
+                next: "Повтор",
+                lang: "Язык",
+                authorAnon: "Аноним",
+                authorVarious: "Разные переводчики",
+                wearFT: "После полевых испытаний",
+                wearNP: "Не окрашено",
+                wearFN: "Прямо с завода",
+                wearMW: "Немного поношенное"
+            },
+            da: {
+                enter: "klik for at gå ind",
+                subtitle: "Sociale medier, setup & bibliotek",
+                denmark: "Danmark",
+                socials: "Links",
+                desktop: "Desktop",
+                peripherals: "Tilbehør",
+                consoles: "Gaming",
+                gadgets: "Gadgets",
+                setup: "Setup",
+                inventory: "Inventar",
+                library: "Bibliotek",
+                libraryNote: "(værker læst indtil nu)",
+                openInv: "Gå til inventar",
+                value: "Værdi",
+                cpu: "CPU",
+                gpu: "GPU",
+                ram: "RAM",
+                mb: "Bundkort",
+                cooler: "Vandkøling",
+                ssd: "SSD",
+                case: "Kabinet (Open Build)",
+                monitor: "Skærm",
+                keyboard: "Tastatur",
+                mouse: "Mus",
+                mousepad: "Glasmåtte",
+                sleeve: "Ærme",
+                earbuds: "Headset",
+                mic: "Mikrofon",
+                speaker: "Højttaler",
+                console: "Konsol",
+                controller: "Controller",
+                tv: "TV",
+                phone: "Telefon",
+                laptop: "Bærbar",
+                buds: "Øretelefoner",
+                watch: "Smartwatch",
+                ipod: "iPod",
+                earphones: "Høretelefoner",
+                contact: "Kontakt:",
+                views: "Besøgende",
+                online: "Online",
+                prev: "Start forfra",
+                play: "Afspil",
+                next: "Loop",
+                lang: "Sprog",
+                authorAnon: "Anonym",
+                authorVarious: "Forskellige oversættere",
+                wearFT: "Afprøvet i marken",
+                wearNP: "Ikke malet",
+                wearFN: "Fabriksny",
+                wearMW: "Lidt slidt"
+            },
+            fi: {
+                enter: "napsauta päästäksesi sisään",
+                subtitle: "Sosiaalinen media, kokoonpano & kirjasto",
+                denmark: "Tanska",
+                socials: "Linkit",
+                desktop: "Tietokone",
+                peripherals: "Oheislaitteet",
+                consoles: "Gaming",
+                gadgets: "Laitteet",
+                setup: "Kokoonpano",
+                inventory: "Inventaario",
+                library: "Kirjasto",
+                libraryNote: "(tähän mennessä luetut teokset)",
+                openInv: "Siirry inventaarioon",
+                value: "Arvo",
+                cpu: "Suoritin",
+                gpu: "Näytönohjain",
+                ram: "RAM",
+                mb: "Emolevy",
+                cooler: "Nestejäähdytys",
+                ssd: "SSD",
+                case: "Kotelo (Open Build)",
+                monitor: "Näyttö",
+                keyboard: "Näppäimistö",
+                mouse: "Hiiri",
+                mousepad: "Lasimatto",
+                sleeve: "Hiha",
+                earbuds: "Headset",
+                mic: "Mikrofoni",
+                speaker: "Kaiutin",
+                console: "Konsoli",
+                controller: "Ohjain",
+                tv: "TV",
+                phone: "Puhelin",
+                laptop: "Kannettava",
+                buds: "Kuulokkeet",
+                watch: "Älykello",
+                ipod: "iPod",
+                earphones: "Nappikuulokkeet",
+                contact: "Yhteystiedot:",
+                views: "Kävijät",
+                online: "Paikalla",
+                prev: "Aloita alusta",
+                play: "Toista",
+                next: "Silmukka",
+                lang: "Kieli",
+                authorAnon: "Anonyymi",
+                authorVarious: "Useita kääntäjiä",
+                wearFT: "Kentällä kokeiltu",
+                wearNP: "Maalaamaton",
+                wearFN: "Suoraan tehtaalta",
+                wearMW: "Vähän käytetty"
             }
         };
+        var LANGS = ["pt", "en", "es", "de", "ru", "da", "fi"];
+        var HTML_LANG = { pt: "pt-BR", en: "en-GB", es: "es", de: "de", ru: "ru", da: "da", fi: "fi" };
+        var WEAR_KEY = {
+            "Field-Tested": "wearFT",
+            "Not Painted": "wearNP",
+            "Factory New": "wearFN",
+            "Minimal Wear": "wearMW"
+        };
+
         function detectLang() {
             var saved = localStorage.getItem("aeromorto-lang");
-            if (saved === "en" || saved === "pt") return saved;
+            if (LANGS.indexOf(saved) !== -1) return saved;
             var list = (navigator.languages || []).slice();
             if (navigator.language) list.push(navigator.language);
             if (navigator.userLanguage) list.push(navigator.userLanguage);
             for (var i = 0; i < list.length; i++) {
-                if (/^pt/i.test(list[i] || "")) return "pt";
+                var base = String(list[i] || "").toLowerCase().split("-")[0];
+                if (LANGS.indexOf(base) !== -1) return base;
             }
             return "en";
         }
@@ -1045,7 +1500,7 @@
 
         function applyLang() {
             var pack = I18N[lang];
-            document.documentElement.lang = lang === "pt" ? "pt-br" : "en";
+            document.documentElement.lang = HTML_LANG[lang] || "en";
             document.querySelectorAll("[data-i18n]").forEach(function (el) {
                 var key = el.getAttribute("data-i18n");
                 if (pack[key]) el.textContent = pack[key];
@@ -1058,28 +1513,26 @@
                 var key = el.getAttribute("data-i18n-aria");
                 if (pack[key]) el.setAttribute("aria-label", pack[key]);
             });
-            document.getElementById("langFrom").textContent = lang === "pt" ? "PT" : "EN";
-            document.getElementById("langTo").textContent = lang === "pt" ? "EN" : "PT";
-            document.getElementById("langFrom").classList.add("on");
-            document.getElementById("langTo").classList.remove("on");
-            document.getElementById("langBtn").setAttribute("aria-label", pack.lang);
-            renderViews();
+            document.querySelectorAll("#langNav button").forEach(function (btn) {
+                var on = btn.getAttribute("data-lang") === lang;
+                btn.classList.toggle("on", on);
+                btn.setAttribute("aria-pressed", on ? "true" : "false");
+            });
             renderInventory();
             renderLibrary();
         }
 
-        var VIEW_COUNTS = [4322, 5322, 6322, 7322, 8322, 9322];
-        var viewCount = VIEW_COUNTS[Math.floor(Math.random() * VIEW_COUNTS.length)];
-
-        function formatViews(n) {
-            var sep = lang === "pt" ? "." : ",";
-            var digits = String(n);
-            return digits.slice(0, -3) + sep + digits.slice(-3);
+        function groupSep() {
+            if (lang === "en") return ",";
+            if (lang === "ru" || lang === "fi") return "\u00a0";
+            return ".";
         }
 
-        function renderViews() {
-            var el = document.getElementById("viewCount");
-            if (el) el.textContent = formatViews(viewCount);
+        function priceKey() {
+            if (lang === "pt") return "brl";
+            if (lang === "en") return "usd";
+            if (lang === "ru") return "rub";
+            return "eur";
         }
 
 
@@ -1090,8 +1543,10 @@
                         "wearEn": "Field-Tested",
                         "wearPt": "Testada em Campo",
                         "float": "0.182927995920181274",
-                        "usd": 67800,
-                        "brl": 368983,
+                        "usd": 83447,
+                        "eur": 74554,
+                        "rub": 6793951,
+                        "brl": 457800,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tk5UvzWCL2kpn2-DFk_OKherB0H_qSCXKR09F7teVgWiT9k08l5WrVnNeuI3qRaAEmCZJ0FuRYsRDsm9LnMryw71HfiooUmSn9hzQJsHg51Ex1iQ/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53357694176"
             },
@@ -1101,8 +1556,10 @@
                         "wearEn": "Not Painted",
                         "wearPt": "Não pintada",
                         "float": "",
-                        "usd": 86250,
-                        "brl": 469381,
+                        "usd": 114435,
+                        "eur": 102239,
+                        "rub": 9316824,
+                        "brl": 627800,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XuWbwcuyMESA4Fdl-4nnpU7iQA3-kKnr8ytd6s2jMZtvIemcAGKEj7ojtOIwSnrrkEt25WiEw438cXuUaQB0WcBxFrUItxa6lNezMOKzsVPAy9USYWigJ8Q/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53868767494"
             },
@@ -1112,8 +1569,10 @@
                         "wearEn": "Factory New",
                         "wearPt": "Nova de Fábrica",
                         "float": "0.0531510189175605774",
-                        "usd": 14450,
-                        "brl": 78639,
+                        "usd": 22457,
+                        "eur": 20063,
+                        "rub": 1828341,
+                        "brl": 123200,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_C9k7OC7ZbRhJc-RHGaGztF6ueZhW2e2k0l2sW_WzN7_cS6SbgV1CsF3TOEI4EOwloGzNLzg5g3fiIpHxC78kGoXuTqeOjwH/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53704826804"
             },
@@ -1123,7 +1582,9 @@
                         "wearEn": "Minimal Wear",
                         "wearPt": "Pouco Usada",
                         "float": "0.134716063737869263",
-                        "usd": 816,
+                        "usd": 810,
+                        "eur": 724,
+                        "rub": 65936,
                         "brl": 4443,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiVI0POlPPNSMOKcCGKD0ud5vuBlcCW6khUz_W3Sytb4cCqTOFUpWJtzTOUD5hPsw9a0Yrnrs1SK3ooXzy6shilM5311o7FVYrIufmI/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_53845307165"
@@ -1134,8 +1595,10 @@
                         "wearEn": "Factory New",
                         "wearPt": "Nova de Fábrica",
                         "float": "0.0672165825963020325",
-                        "usd": 16405,
-                        "brl": 89279,
+                        "usd": 24462,
+                        "eur": 21855,
+                        "rub": 1991586,
+                        "brl": 134200,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7vORfqF_NPmUAVicyOl-pK9qSyyywxgjtmnVytyocnLGPA4iWcYmRLYIu0S-xtbuMLjg51DXjoJC02yg2VjGnh4J/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_52877939559"
             },
@@ -1145,8 +1608,10 @@
                         "wearEn": "",
                         "wearPt": "",
                         "float": "",
-                        "usd": 7990,
-                        "brl": 43487,
+                        "usd": 13707,
+                        "eur": 12247,
+                        "rub": 1116001,
+                        "brl": 75200,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fgn8oYby8iRe_OGnZ6psLM-FD3Waj-0h4LM5H3jjzR9-4zmHzIuucXOWaAEkCsR5FrFcsEG5wNGzNeng71TAy9UScc7Ksy8/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_50131088497"
             },
@@ -1156,23 +1621,29 @@
                         "wearEn": "",
                         "wearPt": "",
                         "float": "",
-                        "usd": 2157,
-                        "brl": 11744,
+                        "usd": 4284,
+                        "eur": 3827,
+                        "rub": 348750,
+                        "brl": 23500,
                         "icon": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPLdXz6TkLdw5LY4Hnmwl0wktj7dn4r9I3OWPFApC5F1QeAO5xi4lIDiM_SiuVKk3V4ZcQ/360fx360f",
                         "href": "https://steamcommunity.com/id/Aeromorto/inventory/#730_2_51846357564"
             }
 ];
 
-        var INVENTORY_TOTAL = { usd: 199330, brl: 1084798 };
+        var INVENTORY_TOTAL = { usd: 267036, eur: 238577, rub: 21741013, brl: 1464985 };
 
         function money(cents) {
             var neg = cents < 0;
             cents = Math.abs(cents);
             var whole = String(Math.floor(cents / 100));
             var frac = String(cents % 100).padStart(2, "0");
-            var sep = lang === "pt" ? "." : ",";
-            var grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
-            return (neg ? "-" : "") + (lang === "pt" ? "R$ " + grouped + "," + frac : "$" + grouped + "." + frac);
+            var grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, groupSep());
+            var body;
+            if (lang === "pt") body = "R$ " + grouped + "," + frac;
+            else if (lang === "en") body = "$" + grouped + "." + frac;
+            else if (lang === "ru") body = grouped + "," + frac + " \u20bd";
+            else body = grouped + "," + frac + " \u20ac";
+            return (neg ? "-" : "") + body;
         }
         function fmtFloat(raw) {
             var n = Number(raw);
@@ -1184,7 +1655,7 @@
             var totalEl = document.getElementById("invTotal");
             if (!grid || !totalEl) return;
             grid.textContent = "";
-            var key = lang === "pt" ? "brl" : "usd";
+            var key = priceKey();
             LOADOUT.forEach(function (item) {
                 var a = document.createElement("a");
                 a.className = "inv-item";
@@ -1202,7 +1673,7 @@
                 name.textContent = item.name;
                 a.appendChild(imgWrap);
                 a.appendChild(name);
-                var wear = lang === "pt" ? item.wearPt : item.wearEn;
+                var wear = item.wearEn && I18N[lang][WEAR_KEY[item.wearEn]];
                 if (wear) {
                     var wearEl = document.createElement("span");
                     wearEl.className = "inv-meta";
@@ -1252,11 +1723,15 @@
                         if (!row) return;
                         if (row.usd) item.usd = row.usd;
                         if (row.brl) item.brl = row.brl;
+                        if (row.eur) item.eur = row.eur;
+                        if (row.rub) item.rub = row.rub;
                     });
                 }
                 var inventory = data.inventory;
-                if (inventory && inventory.usd && inventory.brl) {
-                    INVENTORY_TOTAL = { usd: inventory.usd, brl: inventory.brl };
+                if (inventory && inventory.brl) {
+                    ["usd", "brl", "eur", "rub"].forEach(function (code) {
+                        if (inventory[code]) INVENTORY_TOTAL[code] = inventory[code];
+                    });
                 }
                 renderInventory();
             }).catch(function () {});
@@ -1527,6 +2002,100 @@
             }
         ];
 
+        var BOOK_I18N = {
+            "Os Protocolos dos Sábios de Sião": {
+                es: "Los protocolos de los sabios de Sión",
+                de: "Die Protokolle der Weisen von Zion",
+                ru: "Протоколы сионских мудрецов",
+                da: "Zions Vises Protokoller",
+                fi: "Siionin viisaiden pöytäkirjat"
+            },
+            "O Judeu Internacional": {
+                es: "El judío internacional",
+                de: "Der internationale Jude",
+                ru: "Международное еврейство",
+                da: "Den internationale jøde",
+                fi: "Kansainvälinen juutalainen"
+            },
+            "Bíblia do Rei James": {
+                es: "Biblia del Rey Jacobo",
+                de: "King-James-Bibel",
+                ru: "Библия короля Якова"
+            },
+            "A Sociedade Industrial e Seu Futuro": {
+                es: "La sociedad industrial y su futuro",
+                de: "Die industrielle Gesellschaft und ihre Zukunft",
+                ru: "Индустриальное общество и его будущее"
+            },
+            "A Fonte Oculta": {
+                es: "El manantial oculto"
+            },
+            "Minha Luta": {
+                es: "Mi lucha",
+                de: "Mein Kampf",
+                ru: "Моя борьба",
+                da: "Min kamp",
+                fi: "Taisteluni"
+            },
+            "A Técnica e o Desafio do Século": {
+                es: "La edad de la técnica"
+            },
+            "A arte de lidar com as mulheres": {
+                es: "El arte de tratar con las mujeres",
+                de: "Die Kunst, mit Frauen umzugehen",
+                ru: "Искусство обращаться с женщинами"
+            },
+            "Aforismos para a sabedoria de vida": {
+                es: "Aforismos sobre la sabiduría de la vida",
+                de: "Aphorismen zur Lebensweisheit",
+                ru: "Афоризмы житейской мудрости"
+            },
+            "Nos Penhascos de Mármore": {
+                es: "Sobre los acantilados de mármol",
+                de: "Auf den Marmorklippen",
+                ru: "На мраморных утёсах"
+            },
+            "Tempestades de Aço": {
+                es: "Tempestades de acero",
+                de: "In Stahlgewittern",
+                ru: "В стальных грозах"
+            },
+            "Os Inovadores": {
+                es: "Los innovadores",
+                de: "Die Innovatoren",
+                ru: "Инноваторы"
+            },
+            "Os Diários de Alfred Rosenberg": {
+                de: "Die Tagebücher von 1934 bis 1944"
+            },
+            "Anarquia e Cristianismo": {
+                es: "Anarquía y cristianismo"
+            },
+            "O Homem e o Dinheiro": {
+                es: "El hombre y el dinero"
+            },
+            "The Human Zoo": {
+                es: "El zoo humano",
+                de: "Der menschliche Zoo",
+                ru: "Людской зверинец"
+            }
+        };
+
+        function bookTitle(book) {
+            if (lang === "pt") return book.titlePt;
+            if (lang === "en") return book.titleEn;
+            var extra = BOOK_I18N[book.titlePt];
+            if (extra && extra[lang]) return extra[lang];
+            return book.titleEn;
+        }
+
+        function bookAuthor(book) {
+            if (lang === "pt") return book.authorPt || book.author;
+            if (book.authorEn === "Anonymous") return I18N[lang].authorAnon;
+            if (book.authorEn === "Various translators") return I18N[lang].authorVarious;
+            return book.authorEn || book.author;
+        }
+
         var LIBRARY_FIRST = [
             "A Sociedade Industrial e Seu Futuro",
             "A Técnica e o Desafio do Século"
@@ -1540,11 +2109,8 @@
                 if (at === -1) rest.push(book);
                 else pinned[at] = book;
             });
-            var locale = lang === "pt" ? "pt" : "en";
             rest.sort(function (a, b) {
-                var left = lang === "pt" ? a.titlePt : a.titleEn;
-                var right = lang === "pt" ? b.titlePt : b.titleEn;
-                return left.localeCompare(right, locale, { sensitivity: "base" });
+                return bookTitle(a).localeCompare(bookTitle(b), lang, { sensitivity: "base" });
             });
             return pinned.filter(Boolean).concat(rest);
         }
@@ -1564,14 +2130,14 @@
                 cover.className = "book-cover";
                 var img = document.createElement("img");
                 img.src = pt ? book.coverPt : book.coverEn;
-                img.alt = pt ? book.titlePt : book.titleEn;
+                img.alt = bookTitle(book);
                 cover.appendChild(img);
                 var title = document.createElement("span");
                 title.className = "book-title";
-                title.textContent = pt ? book.titlePt : book.titleEn;
+                title.textContent = bookTitle(book);
                 var author = document.createElement("span");
                 author.className = "book-meta";
-                author.textContent = pt ? (book.authorPt || book.author) : (book.authorEn || book.author);
+                author.textContent = bookAuthor(book);
                 var year = document.createElement("span");
                 year.className = "book-meta";
                 year.textContent = String(book.year);
@@ -1583,9 +2149,13 @@
             });
         }
 
-        document.getElementById("langBtn").addEventListener("click", function (e) {
+        document.getElementById("langNav").addEventListener("click", function (e) {
+            var btn = e.target.closest("button");
+            if (!btn) return;
             e.stopPropagation();
-            lang = lang === "pt" ? "en" : "pt";
+            var next = btn.getAttribute("data-lang");
+            if (!I18N[next] || next === lang) return;
+            lang = next;
             localStorage.setItem("aeromorto-lang", lang);
             applyLang();
         });

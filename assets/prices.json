@@ -1,42 +1,60 @@
 {
-  "updated": "2026-11-03T19:28:40Z",
-  "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
+  "updated": "2026-11-04T16:47:15Z",
+  "source": "Showcase card prices were set by hand on 2026-11-04. BRL is the source. USD, EUR and RUB use the open.er-api.com USD rates from 2026-11-04 (BRL 5.48609, EUR 0.893426, RUB 81.415956). inventory adds the rest of the marketable CS2 items on top of the previous R$ 10.847,98 total. The scheduled Steam updater only knows USD and BRL and will replace these numbers on its next run.",
   "items": {
     "gloves": {
-      "usd": 62000,
-      "brl": 337416
+      "brl": 457800,
+      "usd": 83447,
+      "eur": 74554,
+      "rub": 6793951
     },
     "m9": {
-      "usd": 86250,
-      "brl": 469381
+      "brl": 627800,
+      "usd": 114435,
+      "eur": 102239,
+      "rub": 9316824
     },
     "awp": {
-      "usd": 14197,
-      "brl": 77261
+      "brl": 123200,
+      "usd": 22457,
+      "eur": 20063,
+      "rub": 1828341
     },
     "ak": {
-      "usd": 753,
-      "brl": 4103
+      "brl": 4443,
+      "usd": 810,
+      "eur": 724,
+      "rub": 65936
     },
     "deagle": {
-      "usd": 16405,
-      "brl": 89279
+      "brl": 134200,
+      "usd": 24462,
+      "eur": 21855,
+      "rub": 1991586
     },
     "sally": {
-      "usd": 7990,
-      "brl": 43487
+      "brl": 75200,
+      "usd": 13707,
+      "eur": 12247,
+      "rub": 1116001
     },
     "ava": {
-      "usd": 2157,
-      "brl": 11744
+      "brl": 23500,
+      "usd": 4284,
+      "eur": 3827,
+      "rub": 348750
     }
   },
   "inventory": {
-    "usd": 193214,
-    "brl": 1051513,
+    "usd": 267036,
+    "eur": 238577,
+    "rub": 21741013,
+    "brl": 1464985,
     "units": 40,
     "unique": 32,
-    "fxBrlPerUsd": 5.442214,
+    "fxBrlPerUsd": 5.48609,
+    "fxEurPerUsd": 0.893426,
+    "fxRubPerUsd": 81.415956,
     "unpriced": [],
     "holdings": {
       "AK-47 | Slate (Minimal Wear)": 1,
