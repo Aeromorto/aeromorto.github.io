@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T19:54:55Z",
+  "updated": "2026-11-07T05:51:55Z",
   "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
   "items": {
     "gloves": {
@@ -46,15 +46,18 @@
     }
   },
   "inventory": {
-    "usd": 201780,
-    "brl": 1106744,
-    "units": 40,
-    "unique": 32,
+    "usd": 201891,
+    "brl": 1107353,
+    "units": 42,
+    "unique": 33,
     "fxBrlPerUsd": 5.484923,
-    "unpriced": [],
+    "unpriced": [
+      "AK-47 | VariCamo Grey (Battle-Scarred)"
+    ],
     "holdings": {
+      "AK-47 | VariCamo Grey (Battle-Scarred)": 1,
+      "Dreams & Nightmares Case": 5,
       "XM1014 | Gum Wall Camo (Minimal Wear)": 1,
-      "Dreams & Nightmares Case": 4,
       "Sawed-Off | Runoff (Field-Tested)": 1,
       "Sealed Dead Hand Terminal": 1,
       "P90 | Blue Tac (Minimal Wear)": 1,
