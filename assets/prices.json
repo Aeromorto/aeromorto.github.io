@@ -1,34 +1,34 @@
 {
-  "updated": "2026-11-10T19:41:03Z",
+  "updated": "2026-11-11T19:33:35Z",
   "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
   "items": {
     "gloves": {
-      "brl": 373233,
-      "usd": 67721,
+      "brl": 349870,
+      "usd": 62658,
       "eur": 74554,
       "rub": 6793951
     },
     "m9": {
-      "brl": 468464,
-      "usd": 85000,
+      "brl": 491377,
+      "usd": 88000,
       "eur": 102239,
       "rub": 9316824
     },
     "awp": {
-      "brl": 82621,
-      "usd": 14990,
+      "brl": 80668,
+      "usd": 14447,
       "eur": 20063,
       "rub": 1828341
     },
     "ak": {
-      "brl": 4140,
-      "usd": 848,
+      "brl": 4282,
+      "usd": 766,
       "eur": 724,
       "rub": 65936
     },
     "deagle": {
-      "brl": 89575,
-      "usd": 16332,
+      "brl": 89475,
+      "usd": 16023,
       "eur": 21855,
       "rub": 1991586
     },
@@ -46,11 +46,11 @@
     }
   },
   "inventory": {
-    "usd": 200638,
-    "brl": 1104483,
+    "usd": 197641,
+    "brl": 1102376,
     "units": 42,
     "unique": 33,
-    "fxBrlPerUsd": 5.504828,
+    "fxBrlPerUsd": 5.577674,
     "unpriced": [
       "AK-47 | VariCamo Grey (Battle-Scarred)"
     ],
@@ -92,39 +92,39 @@
     "listings": {
       "Dreams & Nightmares Case": {
         "usd": 111,
-        "brl": 611
+        "brl": 619
       },
       "Dual Berettas | Elite 1.6 (Factory New)": {
         "usd": 98,
-        "brl": 539
+        "brl": 547
       },
       "FAMAS | Corp Defense (Factory New)": {
         "usd": 121,
-        "brl": 666
+        "brl": 675
       },
       "Galil AR | Metallic Squeezer (Factory New)": {
         "usd": 81,
-        "brl": 446
+        "brl": 452
       },
       "Glock-18 | Wraiths (Field-Tested)": {
         "usd": 60,
-        "brl": 330
+        "brl": 335
       },
       "M4A4 | Dark Operative (Minimal Wear)": {
         "usd": 153,
-        "brl": 842
+        "brl": 853
       },
       "M4A4 | Magnesium (Minimal Wear)": {
         "usd": 142,
-        "brl": 782
+        "brl": 792
       },
       "MAC-10 | Video Cam (Minimal Wear)": {
         "usd": 15,
-        "brl": 83
+        "brl": 84
       },
       "MP7 | Armor Core (Minimal Wear)": {
         "usd": 47,
-        "brl": 259
+        "brl": 262
       },
       "MP9 | Bee-Tron (Field-Tested)": {
         "usd": 3,
@@ -132,11 +132,11 @@
       },
       "MP9 | Broken Record (Well-Worn)": {
         "usd": 8,
-        "brl": 44
+        "brl": 45
       },
       "MP9 | Dart (Field-Tested)": {
         "usd": 77,
-        "brl": 424
+        "brl": 429
       },
       "P250 | Sedimentary (Field-Tested)": {
         "usd": 4,
@@ -156,11 +156,11 @@
       },
       "Revolution Case": {
         "usd": 19,
-        "brl": 105
+        "brl": 106
       },
       "SSG 08 | Carbon Fiber (Factory New)": {
         "usd": 302,
-        "brl": 1662
+        "brl": 1684
       },
       "Sawed-Off | Runoff (Field-Tested)": {
         "usd": 3,
@@ -168,7 +168,7 @@
       },
       "Sealed Dead Hand Terminal": {
         "usd": 30,
-        "brl": 165
+        "brl": 167
       },
       "Sealed Genesis Terminal": {
         "usd": 7,
@@ -176,15 +176,15 @@
       },
       "StatTrak™ Music Kit | Neck Deep, Life's Not Out To Get You": {
         "usd": 1671,
-        "brl": 9199
+        "brl": 9320
       },
       "Tec-9 | Citric Acid (Factory New)": {
         "usd": 15,
-        "brl": 83
+        "brl": 84
       },
       "USP-S | Ticket to Hell (Minimal Wear)": {
         "usd": 95,
-        "brl": 523
+        "brl": 530
       },
       "XM1014 | Gum Wall Camo (Minimal Wear)": {
         "usd": 6,
