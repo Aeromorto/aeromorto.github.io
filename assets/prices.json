@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-11T19:33:35Z",
+  "updated": "2026-11-12T19:52:52Z",
   "source": "Showcase cards use the Steam priceoverview lowest listing. inventory.usd and inventory.brl add every other marketable CS2 item. Stored listings stay until a new item needs a price; that fallback is the latest Steam sale on prices.csgotrader.app. Unmarketable assets are excluded.",
   "items": {
     "gloves": {
-      "brl": 349870,
-      "usd": 62658,
+      "brl": 374115,
+      "usd": 67000,
       "eur": 74554,
       "rub": 6793951
     },
@@ -16,7 +16,7 @@
     },
     "awp": {
       "brl": 80668,
-      "usd": 14447,
+      "usd": 14400,
       "eur": 20063,
       "rub": 1828341
     },
@@ -46,11 +46,11 @@
     }
   },
   "inventory": {
-    "usd": 197641,
-    "brl": 1102376,
+    "usd": 201936,
+    "brl": 1126627,
     "units": 42,
     "unique": 33,
-    "fxBrlPerUsd": 5.577674,
+    "fxBrlPerUsd": 5.57913,
     "unpriced": [
       "AK-47 | VariCamo Grey (Battle-Scarred)"
     ],
@@ -112,7 +112,7 @@
       },
       "M4A4 | Dark Operative (Minimal Wear)": {
         "usd": 153,
-        "brl": 853
+        "brl": 854
       },
       "M4A4 | Magnesium (Minimal Wear)": {
         "usd": 142,
@@ -136,7 +136,7 @@
       },
       "MP9 | Dart (Field-Tested)": {
         "usd": 77,
-        "brl": 429
+        "brl": 430
       },
       "P250 | Sedimentary (Field-Tested)": {
         "usd": 4,
@@ -160,7 +160,7 @@
       },
       "SSG 08 | Carbon Fiber (Factory New)": {
         "usd": 302,
-        "brl": 1684
+        "brl": 1685
       },
       "Sawed-Off | Runoff (Field-Tested)": {
         "usd": 3,
@@ -176,7 +176,7 @@
       },
       "StatTrak™ Music Kit | Neck Deep, Life's Not Out To Get You": {
         "usd": 1671,
-        "brl": 9320
+        "brl": 9323
       },
       "Tec-9 | Citric Acid (Factory New)": {
         "usd": 15,
